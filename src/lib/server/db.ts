@@ -123,9 +123,17 @@ async function localBackup(fileName: string) {
   backupLocalDatabase(fileName);
 }
 
-async function schemaVersion(): Promise<number> {
+export async function schemaVersion(): Promise<number> {
+  const meta = await db.prepare("SELECT value FROM app_meta WHERE key='schema_version'").get<{ value: string }>();
+  if (meta) return Number(meta.value);
+  if (!localDatabaseFile) return 0;
   const row = await db.prepare("PRAGMA user_version").get<{ user_version: number }>();
   return Number(row?.user_version ?? 0);
+}
+
+async function setSchemaVersion(version: number): Promise<void> {
+  await db.prepare("INSERT INTO app_meta(key,value) VALUES('schema_version',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value").run(String(version));
+  if (localDatabaseFile) await db.exec(`PRAGMA user_version=${version}`);
 }
 
 async function hasColumn(table: string, column: string): Promise<boolean> {
@@ -135,10 +143,12 @@ async function hasColumn(table: string, column: string): Promise<boolean> {
 
 async function initialize() {
   if (localDatabaseFile) {
-    await db.exec("PRAGMA journal_mode=WAL;");
+    await db.exec("PRAGMA journal_mode=WAL");
+    await db.exec("PRAGMA busy_timeout=5000");
   }
-  await db.exec("PRAGMA foreign_keys=ON; PRAGMA busy_timeout=5000;");
+  await db.exec("PRAGMA foreign_keys=ON");
   await db.exec(`
+    CREATE TABLE IF NOT EXISTS app_meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, role TEXT NOT NULL CHECK(role IN ('owner','tenant')));
     CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id), expires INTEGER NOT NULL);
     CREATE TABLE IF NOT EXISTS properties(id TEXT PRIMARY KEY, owner_id TEXT NOT NULL REFERENCES users(id), tenant_id TEXT REFERENCES users(id), address TEXT NOT NULL);
@@ -268,9 +278,9 @@ async function initialize() {
             json_object('title',tickets.title,'status',tickets.status,'migrated',1), tickets.created_at
           FROM tickets JOIN users ON users.id=tickets.creator_id
           WHERE NOT EXISTS (SELECT 1 FROM ticket_events WHERE ticket_events.ticket_id=tickets.id);
-        PRAGMA user_version=1;
       `);
     });
+    await setSchemaVersion(1);
   }
 
   if (version < 2) {
@@ -329,9 +339,9 @@ async function initialize() {
         );
         CREATE INDEX IF NOT EXISTS property_documents_property ON property_documents(property_id,created_at DESC);
         CREATE INDEX IF NOT EXISTS property_documents_lease ON property_documents(lease_id,created_at DESC);
-        PRAGMA user_version=2;
       `);
     });
+    await setSchemaVersion(2);
   }
 
   if (version < 3) {
@@ -341,9 +351,9 @@ async function initialize() {
       if (!await hasColumn("files", "created_at")) await db.exec("ALTER TABLE files ADD COLUMN created_at INTEGER NOT NULL DEFAULT 0;");
       await db.exec(`
         UPDATE files SET created_at=COALESCE((SELECT tickets.created_at FROM tickets WHERE tickets.id=files.ticket_id),0) WHERE created_at=0;
-        PRAGMA user_version=3;
       `);
     });
+    await setSchemaVersion(3);
   }
 }
 

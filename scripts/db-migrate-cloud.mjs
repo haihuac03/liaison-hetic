@@ -18,8 +18,8 @@ if (!databaseUrl || databaseUrl.startsWith("file:")) {
     const databaseModule = await import("../src/lib/server/db.ts");
     database = databaseModule.db;
     await databaseModule.ready;
-    const version = await database.prepare("PRAGMA user_version").get();
-    if (Number(version?.user_version) !== 3) {
+    const version = await databaseModule.schemaVersion();
+    if (Number(version) !== 3) {
       throw new Error("La version de schéma obtenue n'est pas la version attendue (3).");
     }
     const tables = await database.prepare(`
