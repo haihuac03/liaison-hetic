@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="850" viewBox="0 0 600 850">
+  <rect width="600" height="850" fill="#FBFAF6"/>
+  <rect x="0" y="0" width="600" height="10" fill="#243B47"/>
+  <rect x="48" y="48" width="42" height="42" rx="12" fill="#243B47"/>
+  <path d="M62 78h14M64 70h10M69 62v8m-5-4h10" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <text x="103" y="67" font-family="Helvetica, Arial" font-size="18" font-weight="700" fill="#243B47" letter-spacing="1.5">LIAISON</text>
+  <text x="103" y="82" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">24 rue des Lilas, Paris</text>
+  <rect x="408" y="52" width="144" height="30" rx="8" fill="#E4EAED"/>
+  <text x="480" y="71" text-anchor="middle" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#243B47" letter-spacing=".6">DDT-75-992</text>
+  <text x="48" y="134" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#243B47" letter-spacing="1">DOSSIER DE DIAGNOSTIC TECHNIQUE</text>
+  <text x="48" y="166" font-family="Georgia, serif" font-size="25" font-weight="700" fill="#1C272C">Dossier de diagnostic technique</text>
+  <text x="48" y="188" font-family="Helvetica, Arial" font-size="9" fill="#6D7679" letter-spacing=".5">Diagnostics applicables au logement — annexé au bail</text>
+  <line x1="48" y1="206" x2="552" y2="206" stroke="#E7E6DF"/>
+  
+  <g font-family="Helvetica, Arial" font-size="9">
+    
+    <rect x="48" y="430" width="504" height="28" rx="6" fill="#F7F6F1" stroke="#E7E6DF"/>
+    <text x="62" y="448" font-size="9" font-weight="700" fill="#1C272C">DPE</text>
+    <text x="300" y="448" font-size="9" fill="#445155">Diagnostic de performance énergétique</text>
+    <text x="538" y="448" text-anchor="end" font-size="9" font-weight="700" fill="#243B47">D</text>
+    <rect x="48" y="464" width="504" height="28" rx="6" fill="#FBFAF6" stroke="#E7E6DF"/>
+    <text x="62" y="482" font-size="9" font-weight="700" fill="#1C272C">Électricité</text>
+    <text x="300" y="482" font-size="9" fill="#445155">Installation intérieure</text>
+    <text x="538" y="482" text-anchor="end" font-size="9" font-weight="700" fill="#243B47">Conforme</text>
+    <rect x="48" y="498" width="504" height="28" rx="6" fill="#F7F6F1" stroke="#E7E6DF"/>
+    <text x="62" y="516" font-size="9" font-weight="700" fill="#1C272C">Gaz</text>
+    <text x="300" y="516" font-size="9" fill="#445155">Installation intérieure</text>
+    <text x="538" y="516" text-anchor="end" font-size="9" font-weight="700" fill="#243B47">Conforme</text>
+    <rect x="48" y="532" width="504" height="28" rx="6" fill="#FBFAF6" stroke="#E7E6DF"/>
+    <text x="62" y="550" font-size="9" font-weight="700" fill="#1C272C">Surface Carrez</text>
+    <text x="300" y="550" font-size="9" fill="#445155">Loi Carrez</text>
+    <text x="538" y="550" text-anchor="end" font-size="9" font-weight="700" fill="#243B47">48 m²</text>
+    <rect x="48" y="566" width="504" height="28" rx="6" fill="#F7F6F1" stroke="#E7E6DF"/>
+    <text x="62" y="584" font-size="9" font-weight="700" fill="#1C272C">Plomb (CREP)</text>
+    <text x="300" y="584" font-size="9" fill="#445155">Immeuble post-1949</text>
+    <text x="538" y="584" text-anchor="end" font-size="9" font-weight="700" fill="#243B47">Non applicable</text>
+    <rect x="48" y="600" width="504" height="28" rx="6" fill="#FBFAF6" stroke="#E7E6DF"/>
+    <text x="62" y="618" font-size="9" font-weight="700" fill="#1C272C">Amiante</text>
+    <text x="300" y="618" font-size="9" fill="#445155">Immeuble post-1997</text>
+    <text x="538" y="618" text-anchor="end" font-size="9" font-weight="700" fill="#243B47">Non applicable</text>
+  </g>
+  
+  <text x="48" y="640" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#243B47" letter-spacing=".8">VALIDITÉ</text>
+  <text x="48" y="658" font-family="Helvetica, Arial" font-size="9.5" fill="#445155">DPE et GES valides jusqu'en 2034 · électricité 6 ans · gaz 3 ans.</text>
+  <text x="48" y="702" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#243B47" letter-spacing=".8">TRAÇABILITÉ</text>
+  <text x="48" y="720" font-family="Helvetica, Arial" font-size="9.5" fill="#445155">Diagnostics réalisés le 28 août et le 2 septembre 2024 par un diagnostiqueur certifié.</text>
+  <line x1="48" y1="742" x2="552" y2="742" stroke="#E7E6DF"/>
+  <text x="48" y="764" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Document de démonstration LIAISON — aperçu non contractuel.</text>
+  <rect x="48" y="786" width="150" height="34" rx="8" fill="#E4EAED"/>
+  <text x="123" y="807" text-anchor="middle" font-family="Helvetica, Arial" font-size="8.5" font-weight="700" fill="#243B47">SIGNATURE eIDAS</text>
+  <text x="552" y="798" text-anchor="end" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Empreinte : 9f2c·a71b·4e08·c3d5</text>
+  <text x="552" y="812" text-anchor="end" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Horodatage certifié · LIAISON</text>
+</svg>

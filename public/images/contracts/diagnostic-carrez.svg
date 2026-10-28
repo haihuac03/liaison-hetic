@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="850" viewBox="0 0 600 850">
+  <rect width="600" height="850" fill="#FBFAF6"/>
+  <rect x="0" y="0" width="600" height="10" fill="#243B47"/>
+  <rect x="48" y="48" width="42" height="42" rx="12" fill="#243B47"/>
+  <path d="M62 78h14M64 70h10M69 62v8m-5-4h10" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <text x="103" y="67" font-family="Helvetica, Arial" font-size="18" font-weight="700" fill="#243B47" letter-spacing="1.5">LIAISON</text>
+  <text x="103" y="82" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">24 rue des Lilas, Paris</text>
+  <rect x="408" y="52" width="144" height="30" rx="8" fill="#F0F5F8"/>
+  <text x="480" y="71" text-anchor="middle" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#2A566A" letter-spacing=".6">CARREZ-2024</text>
+  <text x="48" y="134" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#2A566A" letter-spacing="1">SURFACE CARREZ</text>
+  <text x="48" y="166" font-family="Georgia, serif" font-size="25" font-weight="700" fill="#1C272C">Attestation de surface</text>
+  <text x="48" y="188" font-family="Helvetica, Arial" font-size="9" fill="#6D7679" letter-spacing=".5">Loi n° 96-1107 du 18 décembre 1996</text>
+  <line x1="48" y1="206" x2="552" y2="206" stroke="#E7E6DF"/>
+  <rect x="48" y="438" width="504" height="190" rx="10" fill="#F7F6F1" stroke="#E7E6DF"/>
+  <text x="62" y="462" font-family="Helvetica, Arial" font-size="8" font-weight="700" fill="#6D7679" letter-spacing=".8">INFORMATIONS CLÉS</text>
+  
+    <text x="62" y="482" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Surface privative</text>
+    <text x="552" y="482" text-anchor="end" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">48 m²</text>
+    <text x="48" y="508" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Méthode</text>
+    <text x="552" y="508" text-anchor="end" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">Loi Carrez</text>
+    <text x="48" y="534" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Bien mesuré</text>
+    <text x="552" y="534" text-anchor="end" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">Appartement T2 — lot n° 12</text>
+    <text x="48" y="560" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Date du mesurage</text>
+    <text x="552" y="560" text-anchor="end" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">28 août 2024</text>
+    <text x="48" y="586" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Validité</text>
+    <text x="552" y="586" text-anchor="end" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">Attestation définitive</text>
+    <text x="48" y="612" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Cabinet</text>
+    <text x="552" y="612" text-anchor="end" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">Métrage Île-de-France</text>
+  
+  <text x="48" y="640" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#2A566A" letter-spacing=".8">MENTION</text>
+  <text x="48" y="658" font-family="Helvetica, Arial" font-size="9.5" fill="#445155">La surface est certifiée pour la vente et l'information du locataire.</text>
+  <line x1="48" y1="742" x2="552" y2="742" stroke="#E7E6DF"/>
+  <text x="48" y="764" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Document de démonstration LIAISON — aperçu non contractuel.</text>
+  <rect x="48" y="786" width="150" height="34" rx="8" fill="#F0F5F8"/>
+  <text x="123" y="807" text-anchor="middle" font-family="Helvetica, Arial" font-size="8.5" font-weight="700" fill="#2A566A">SIGNATURE eIDAS</text>
+  <text x="552" y="798" text-anchor="end" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Empreinte : 9f2c·a71b·4e08·c3d5</text>
+  <text x="552" y="812" text-anchor="end" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Horodatage certifié · LIAISON</text>
+</svg>

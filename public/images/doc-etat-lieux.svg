@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="850" viewBox="0 0 600 850">
+  <rect width="600" height="850" fill="#FBFAF6"/>
+  <rect x="0" y="0" width="600" height="10" fill="#456C5A"/>
+  <text x="48" y="66" font-family="Helvetica, Arial" font-size="18" font-weight="700" fill="#243B47" letter-spacing="1.5">LIAISON</text>
+  <text x="48" y="82" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">24 rue des Lilas, Paris</text>
+  <rect x="414" y="48" width="138" height="28" rx="8" fill="#EEF5F1"/>
+  <text x="430" y="66" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#456C5A">ÉTAT DES LIEUX</text>
+  <text x="48" y="150" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#1C272C">État des lieux d'entrée</text>
+  <text x="48" y="174" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">1er septembre 2024 · Appartement T2 — 48 m² · 24 rue des Lilas</text>
+  <line x1="48" y1="198" x2="552" y2="198" stroke="#E7E6DF"/>
+
+  <rect x="48" y="220" width="245" height="150" rx="10" fill="#EAE9E2"/>
+  <rect x="307" y="220" width="245" height="150" rx="10" fill="#EAE9E2"/>
+  <rect x="48" y="220" width="245" height="150" rx="10" fill="url(#g1)" opacity=".7"/>
+  <rect x="307" y="220" width="245" height="150" rx="10" fill="url(#g2)" opacity=".7"/>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#C7C3B8"/><stop offset="1" stop-color="#8F978F"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B9C6BE"/><stop offset="1" stop-color="#6F8278"/></linearGradient>
+  </defs>
+  <text x="60" y="350" font-family="Helvetica, Arial" font-size="8.5" fill="#fff">Séjour · mur ouest</text>
+  <text x="319" y="350" font-family="Helvetica, Arial" font-size="8.5" fill="#fff">Cuisine · plan de travail</text>
+
+  <text x="48" y="404" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing="1">RELEVÉ PIÈCE PAR PIÈCE</text>
+  <line x1="48" y1="418" x2="552" y2="418" stroke="#E7E6DF"/>
+  <g font-family="Helvetica, Arial" font-size="9.5" fill="#1C272C">
+    <text x="48" y="442">Séjour</text><text x="200" y="442" fill="#6D7679">Parquet, murs, radiateur, fenêtre double vitrage</text><text x="536" y="442" text-anchor="end" fill="#456C5A" font-weight="700">Bon état</text>
+    <text x="48" y="468">Cuisine</text><text x="200" y="468" fill="#6D7679">Meubles, plaque, four, évier, robinetterie</text><text x="536" y="468" text-anchor="end" fill="#456C5A" font-weight="700">Bon état</text>
+    <text x="48" y="494">Chambre</text><text x="200" y="494" fill="#6D7679">Parquet, murs, volet roulant, placard</text><text x="536" y="494" text-anchor="end" fill="#456C5A" font-weight="700">Bon état</text>
+    <text x="48" y="520">Salle d'eau</text><text x="200" y="520" fill="#6D7679">Faïence, douche, lavabo, WC</text><text x="536" y="520" text-anchor="end" fill="#8A4C1F" font-weight="700">Mineur</text>
+    <text x="48" y="546">Entrée</text><text x="200" y="546" fill="#6D7679">Sol, murs, placard, interphone</text><text x="536" y="546" text-anchor="end" fill="#456C5A" font-weight="700">Bon état</text>
+  </g>
+  <line x1="48" y1="566" x2="552" y2="566" stroke="#E7E6DF"/>
+
+  <rect x="48" y="588" width="504" height="60" rx="10" fill="#F2F1EC"/>
+  <text x="64" y="612" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679">OBSERVATIONS</text>
+  <text x="64" y="632" font-family="Helvetica, Arial" font-size="9.5" fill="#445155">Traces d'usure normales sur la faïence de la salle d'eau. Aucun désordre structurel relevé.</text>
+
+  <text x="48" y="700" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">Signé par les deux parties le 1er septembre 2024</text>
+  <text x="48" y="736" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#243B47">Claire Bernard</text>
+  <text x="320" y="736" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#243B47">Thomas Martin</text>
+  <line x1="48" y1="748" x2="240" y2="748" stroke="#E7E6DF"/>
+  <line x1="320" y1="748" x2="512" y2="748" stroke="#E7E6DF"/>
+  <text x="48" y="824" font-family="Helvetica, Arial" font-size="7.5" fill="#9AA0A2">Document de démonstration — LIAISON · 18 pages</text>
+</svg>

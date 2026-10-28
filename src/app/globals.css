@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f2f1ec;
+  --foreground: #1c272c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #c2e7d4;
+  color: #1a2c36;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(109, 118, 121, 0.28);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(109, 118, 121, 0.45);
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border border-line bg-white shadow-soft;
+  }
+
+  .eyebrow {
+    @apply text-[10px] font-bold uppercase tracking-[0.14em] text-muted;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-[13px] text-ink outline-none transition placeholder:text-muted/70 focus:border-petrol/30 focus:bg-white focus:ring-4 focus:ring-petrol/5;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-line bg-white text-muted transition hover:border-petrol/20 hover:bg-cream-soft hover:text-ink;
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-petrol px-4 text-[13px] font-semibold text-white transition hover:bg-petrol-dark active:scale-[0.99];
+  }
+
+  .btn-sage {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-sage px-4 text-[13px] font-semibold text-white transition hover:bg-sage-dark active:scale-[0.99];
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-white px-4 text-[13px] font-semibold text-ink transition hover:bg-cream-soft active:scale-[0.99];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-[5px] text-[10.5px] font-semibold leading-none;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .bg-grain {
+    background-image: radial-gradient(rgba(36, 59, 71, 0.045) 0.6px, transparent 0.6px);
+    background-size: 6px 6px;
+  }
+}
+
+/* Accessible focus */
+:focus-visible {
+  outline: 3px solid #365645;
+  outline-offset: 2px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #626b6d !important;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Prevent layout shift when modal opens */
+body.modal-open {
+  overflow: hidden;
+}

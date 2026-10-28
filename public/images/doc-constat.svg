@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="850" viewBox="0 0 600 850">
+  <rect width="600" height="850" fill="#FBFAF6"/>
+  <rect x="0" y="0" width="600" height="10" fill="#8A4C1F"/>
+  <text x="48" y="66" font-family="Helvetica, Arial" font-size="18" font-weight="700" fill="#243B47" letter-spacing="1.5">LIAISON</text>
+  <text x="48" y="82" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">Dossier #2841 · Constat</text>
+  <rect x="446" y="48" width="106" height="28" rx="8" fill="#F8E2CB"/>
+  <text x="468" y="66" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#8A4C1F">CONSTAT</text>
+  <text x="48" y="150" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#1C272C">Constat amiable</text>
+  <text x="48" y="174" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Fuite sous le siphon de la cuisine · 27 octobre 2026</text>
+  <line x1="48" y1="198" x2="552" y2="198" stroke="#E7E6DF"/>
+
+  <text x="48" y="228" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing="1">PARTIES</text>
+  <text x="48" y="252" font-family="Helvetica, Arial" font-size="12" font-weight="700" fill="#1C272C">Thomas Martin · Locataire</text>
+  <text x="320" y="252" font-family="Helvetica, Arial" font-size="12" font-weight="700" fill="#1C272C">Claire Bernard · Bailleur</text>
+
+  <text x="48" y="300" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing="1">FAITS CONSTATÉS</text>
+  <line x1="48" y1="314" x2="552" y2="314" stroke="#E7E6DF"/>
+  <g font-family="Helvetica, Arial" font-size="10" fill="#445155">
+    <text x="48" y="338">Un écoulement continu est observé au niveau de la bague du siphon en PVC.</text>
+    <text x="48" y="356">Une bassine a été placée sous le raccord afin de protéger le fond du meuble.</text>
+    <text x="48" y="374">Trois photographies horodatées ont été transmises via la plateforme LIAISON.</text>
+    <text x="48" y="392">Le devis D482 de Plomberie Martin S.A.S. d'un montant de 145,00 € TTC a été validé.</text>
+  </g>
+
+  <rect x="48" y="426" width="504" height="98" rx="10" fill="#F2F1EC"/>
+  <text x="64" y="450" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679">RÉSOLUTION AMIABLE</text>
+  <text x="64" y="474" font-family="Helvetica, Arial" font-size="10" fill="#445155">Réparation du siphon et des joints par l'artisan certifié LIAISON.</text>
+  <text x="64" y="492" font-family="Helvetica, Arial" font-size="10" fill="#445155">Prise en charge intégrale par le bailleur au titre de la vétusté.</text>
+  <text x="64" y="510" font-family="Helvetica, Arial" font-size="10" fill="#445155">Intervention programmée le jeudi 29 octobre 2026, de 14h00 à 16h00.</text>
+
+  <rect x="48" y="552" width="160" height="112" rx="10" fill="#EAE9E2"/>
+  <rect x="220" y="552" width="160" height="112" rx="10" fill="#E2EDF3"/>
+  <rect x="392" y="552" width="160" height="112" rx="10" fill="#EEF5F1"/>
+  <path d="M70 660v-56c0-12 10-22 22-22h24c12 0 22 10 22 22v56" fill="none" stroke="#8F978F" stroke-width="3"/>
+  <circle cx="300" cy="612" r="24" fill="none" stroke="#2A566A" stroke-width="3"/>
+  <path d="M286 612h28M300 598v28" stroke="#2A566A" stroke-width="3"/>
+  <path d="M414 640l24-24 24 24" fill="none" stroke="#456C5A" stroke-width="3"/>
+  <text x="68" y="678" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Photo 1/3 · siphon</text>
+  <text x="240" y="678" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Photo 2/3 · fuite</text>
+  <text x="412" y="678" font-family="Helvetica, Arial" font-size="8" fill="#6D7679">Photo 3/3 · bassine</text>
+
+  <text x="48" y="724" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">Signatures électroniques des deux parties</text>
+  <text x="48" y="760" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#243B47">Claire Bernard</text>
+  <text x="320" y="760" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#243B47">Thomas Martin</text>
+  <line x1="48" y1="772" x2="240" y2="772" stroke="#E7E6DF"/>
+  <line x1="320" y1="772" x2="512" y2="772" stroke="#E7E6DF"/>
+  <text x="48" y="824" font-family="Helvetica, Arial" font-size="7.5" fill="#9AA0A2">Document de démonstration — LIAISON · horodatage eIDAS</text>
+</svg>

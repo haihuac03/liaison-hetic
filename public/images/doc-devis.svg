@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="850" viewBox="0 0 600 850">
+  <rect width="600" height="850" fill="#FBFAF6"/>
+  <rect x="0" y="0" width="600" height="10" fill="#8A4C1F"/>
+  <rect x="48" y="48" width="42" height="42" rx="12" fill="#243B47"/>
+  <path d="M62 78h14M64 70h10M69 62v8m-5-4h10" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <text x="103" y="67" font-family="Helvetica, Arial" font-size="18" font-weight="700" fill="#243B47" letter-spacing="1.5">LIAISON</text>
+  <text x="103" y="82" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">Dossier #2841 · Fuite siphon</text>
+  <rect x="440" y="52" width="112" height="30" rx="8" fill="#F8E2CB"/>
+  <text x="466" y="71" font-family="Helvetica, Arial" font-size="9.5" font-weight="700" fill="#8A4C1F">DEVIS N° D482</text>
+  <text x="48" y="154" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#1C272C">Devis d'intervention</text>
+  <text x="48" y="178" font-family="Helvetica, Arial" font-size="10" fill="#6D7679">Émis le 27 octobre 2026 · Validité 30 jours</text>
+  <line x1="48" y1="200" x2="552" y2="200" stroke="#E7E6DF"/>
+
+  <text x="48" y="232" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing="1">PRESTATAIRE</text>
+  <text x="48" y="256" font-family="Helvetica, Arial" font-size="13" font-weight="700" fill="#1C272C">Plomberie Martin S.A.S.</text>
+  <text x="48" y="274" font-family="Helvetica, Arial" font-size="9.5" fill="#6D7679">14 rue des Artisans, 75011 Paris · SIRET 884 512 003 00021</text>
+  <text x="48" y="290" font-family="Helvetica, Arial" font-size="9.5" fill="#6D7679">Artisan certifié LIAISON · Assurance RC Pro AXA</text>
+
+  <text x="320" y="232" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing="1">CLIENT</text>
+  <text x="320" y="256" font-family="Helvetica, Arial" font-size="13" font-weight="700" fill="#1C272C">Thomas Martin</text>
+  <text x="320" y="274" font-family="Helvetica, Arial" font-size="9.5" fill="#6D7679">24 rue des Lilas, Bât. B, 75011 Paris</text>
+
+  <rect x="48" y="320" width="504" height="34" rx="8" fill="#243B47"/>
+  <text x="64" y="342" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#fff" letter-spacing=".6">DÉSIGNATION</text>
+  <text x="380" y="342" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#fff" letter-spacing=".6">MONTANT HT</text>
+  <text x="500" y="342" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#fff" letter-spacing=".6">TOTAL</text>
+
+  <line x1="48" y1="382" x2="552" y2="382" stroke="#E7E6DF"/>
+  <text x="64" y="406" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">Remplacement du siphon PVC</text>
+  <text x="64" y="422" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">Dépose du meuble, découpe, raccord étanche, test</text>
+  <text x="436" y="406" font-family="Helvetica, Arial" font-size="10" fill="#1C272C">120,83 €</text>
+  <text x="512" y="406" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">145,00 €</text>
+  <line x1="48" y1="440" x2="552" y2="440" stroke="#E7E6DF"/>
+  <text x="64" y="466" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">Fourniture siphon &amp; joints</text>
+  <text x="436" y="466" font-family="Helvetica, Arial" font-size="10" fill="#1C272C">Inclus</text>
+  <text x="512" y="466" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#1C272C">—</text>
+  <line x1="48" y1="486" x2="552" y2="486" stroke="#E7E6DF"/>
+
+  <rect x="330" y="510" width="222" height="96" rx="10" fill="#F2F1EC"/>
+  <g font-family="Helvetica, Arial" font-size="9.5" fill="#445155">
+    <text x="346" y="534">Total HT</text><text x="536" y="534" text-anchor="end">120,83 €</text>
+    <text x="346" y="554">TVA 20 %</text><text x="536" y="554" text-anchor="end">24,17 €</text>
+    <text x="346" y="584" font-weight="700" font-size="11" fill="#1C272C">Total TTC</text><text x="536" y="584" text-anchor="end" font-size="13" font-weight="700" fill="#243B47">145,00 €</text>
+  </g>
+
+  <rect x="48" y="640" width="504" height="70" rx="10" fill="#EEF5F1" stroke="#DCEBE3"/>
+  <circle cx="70" cy="666" r="9" fill="#456C5A"/>
+  <path d="M66 666l3 3 6-7" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <text x="88" y="670" font-family="Helvetica, Arial" font-size="10.5" font-weight="700" fill="#365645">Devis validé par Claire Bernard</text>
+  <text x="70" y="690" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">27 octobre 2026 à 10:05 · Prise en charge à 100 % par le bailleur</text>
+
+  <text x="48" y="770" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">Bon pour accord — signature électronique</text>
+  <text x="330" y="762" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#243B47">Martin</text>
+  <line x1="330" y1="776" x2="550" y2="776" stroke="#E7E6DF"/>
+  <text x="48" y="824" font-family="Helvetica, Arial" font-size="7.5" fill="#9AA0A2">Document de démonstration — LIAISON</text>
+</svg>

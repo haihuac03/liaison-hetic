@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="850" viewBox="0 0 600 850">
+  <rect width="600" height="850" fill="#FBFAF6"/>
+  <rect x="0" y="0" width="600" height="10" fill="#243B47"/>
+  <rect x="48" y="48" width="42" height="42" rx="12" fill="#243B47"/>
+  <path d="M62 78h14M64 70h10M69 62v8m-5-4h10" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <text x="103" y="67" font-family="Helvetica, Arial" font-size="18" font-weight="700" fill="#243B47" letter-spacing="1.5">LIAISON</text>
+  <text x="103" y="82" font-family="Helvetica, Arial" font-size="9" fill="#6D7679">24 rue des Lilas, Paris</text>
+  <rect x="408" y="52" width="144" height="30" rx="8" fill="#EEF5F1"/>
+  <text x="430" y="71" font-family="Helvetica, Arial" font-size="10" font-weight="700" fill="#456C5A" letter-spacing=".6">BAIL-75-992</text>
+  <text x="48" y="146" font-family="Georgia, serif" font-size="27" font-weight="700" fill="#1C272C">Contrat de location</text>
+  <text x="48" y="168" font-family="Helvetica, Arial" font-size="10" fill="#6D7679" letter-spacing=".6">LOCATION VIDE — RÉSIDENCE PRINCIPALE · LOI N° 89-462 DU 6 JUILLET 1989</text>
+  <line x1="48" y1="188" x2="552" y2="188" stroke="#E7E6DF"/>
+
+  <text x="48" y="220" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#456C5A" letter-spacing="1">ENTRE LES SOUSSIGNÉS</text>
+  <text x="48" y="244" font-family="Helvetica, Arial" font-size="11" font-weight="700" fill="#1C272C">Claire Bernard</text>
+  <text x="48" y="260" font-family="Helvetica, Arial" font-size="9.5" fill="#6D7679">Bailleur · 12 avenue Montaigne, 75008 Paris</text>
+  <text x="48" y="282" font-family="Helvetica, Arial" font-size="11" font-weight="700" fill="#1C272C">Thomas Martin</text>
+  <text x="48" y="298" font-family="Helvetica, Arial" font-size="9.5" fill="#6D7679">Locataire · né le 14/05/1991 à Lyon</text>
+
+  <rect x="48" y="326" width="504" height="86" rx="10" fill="#F2F1EC"/>
+  <text x="64" y="348" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing=".8">DÉSIGNATION DU BIEN</text>
+  <text x="64" y="368" font-family="Helvetica, Arial" font-size="12" font-weight="700" fill="#1C272C">Appartement T2 — 48 m² · 24 rue des Lilas, Paris</text>
+  <text x="64" y="385" font-family="Helvetica, Arial" font-size="9.5" fill="#445155">Bâtiment B · 3e étage avec ascenseur · cave n°14</text>
+  <text x="64" y="400" font-family="Helvetica, Arial" font-size="9.5" fill="#445155">Usage : habitation (résidence principale)</text>
+
+  <text x="48" y="446" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing=".8">CONDITIONS FINANCIÈRES</text>
+  <line x1="48" y1="460" x2="552" y2="460" stroke="#E7E6DF"/>
+  <g font-family="Helvetica, Arial" font-size="10" fill="#1C272C">
+    <text x="48" y="482">Loyer mensuel hors charges</text><text x="552" y="482" text-anchor="end" font-weight="700">960,00 €</text>
+    <text x="48" y="506">Charges locatives provisionnelles</text><text x="552" y="506" text-anchor="end">120,00 €</text>
+    <text x="48" y="530">Dépôt de garantie</text><text x="552" y="530" text-anchor="end">1 000,00 €</text>
+    <text x="48" y="554">Date de prise d'effet</text><text x="552" y="554" text-anchor="end">1er septembre 2024</text>
+  </g>
+  <line x1="48" y1="568" x2="552" y2="568" stroke="#E7E6DF"/>
+
+  <text x="48" y="596" font-family="Helvetica, Arial" font-size="9" font-weight="700" fill="#6D7679" letter-spacing=".8">OBLIGATIONS &amp; CLAUSES</text>
+  <g font-family="Helvetica, Arial" font-size="9" fill="#445155">
+    <text x="48" y="618">Le locataire s'engage à payer le loyer et les charges aux termes convenus.</text>
+    <text x="48" y="634">Le bailleur s'engage à délivrer un logement décent et à assurer la jouissance paisible.</text>
+    <text x="48" y="650">Les réparations locatives sont définies par le décret n° 87-712 du 26 août 1987.</text>
+    <text x="48" y="666">La révision annuelle du loyer intervient à la date anniversaire du bail, selon l'IRL.</text>
+  </g>
+
+  <rect x="48" y="698" width="220" height="76" rx="10" fill="#EEF5F1" stroke="#DCEBE3"/>
+  <circle cx="68" cy="722" r="9" fill="#456C5A"/>
+  <path d="M64 722l3 3 6-7" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <text x="84" y="726" font-family="Helvetica, Arial" font-size="9.5" font-weight="700" fill="#365645">Signature électronique certifiée</text>
+  <text x="64" y="748" font-family="Helvetica, Arial" font-size="8.5" fill="#6D7679">Claire Bernard · 15 octobre 2024 à 11:08</text>
+  <text x="64" y="762" font-family="Helvetica, Arial" font-size="8.5" fill="#6D7679">Thomas Martin · 15 octobre 2024 à 11:24</text>
+
+  <g transform="translate(390 686) rotate(-8)">
+    <rect width="160" height="54" rx="8" fill="none" stroke="#456C5A" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <text x="80" y="23" text-anchor="middle" font-family="Helvetica, Arial" font-size="11" font-weight="700" fill="#456C5A" letter-spacing="1">CERTIFIÉ eIDAS</text>
+    <text x="80" y="38" text-anchor="middle" font-family="Helvetica, Arial" font-size="7.5" fill="#456C5A">Horodatage qualifié · LIAISON</text>
+  </g>
+  <text x="48" y="816" font-family="Helvetica, Arial" font-size="7.5" fill="#9AA0A2">Document de démonstration — LIAISON · page 1/8</text>
+</svg>
