@@ -52,4 +52,12 @@ npx tsc --noEmit
 npm run build
 ```
 
-Next.js est détecté automatiquement par Vercel; aucun `vercel.json` n'est nécessaire pour ce projet. Le déploiement lui-même reste une étape séparée.
+Next.js est détecté automatiquement par Vercel; aucun `vercel.json` n'est nécessaire pour ce projet.
+
+## Intégration Git
+
+Le projet `hetic3/liaison-hetic` est relié au dépôt privé `haihuac03/liaison-hetic`. Un push sur `main` déclenche automatiquement un déploiement de production. En cas d'indisponibilité de l'intégration GitHub, le déploiement manuel de secours reste disponible:
+
+```bash
+npx vercel deploy --prod --yes
+```
