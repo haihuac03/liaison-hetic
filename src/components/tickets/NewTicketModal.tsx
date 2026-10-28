@@ -82,7 +82,7 @@ export default function NewTicketModal() {
       });
       closeNewTicket();
       if (propertyId) setActiveProperty(propertyId);
-      showToast(`Ticket #${ticket.id} créé`, "Le dossier est partagé avec l’autre partie.");
+      showToast(`Ticket #${ticket.id} créé`, "Le ticket est partagé avec l’autre partie.");
       router.push(`/tickets/${ticket.id}`);
     } catch (cause) {
       const failedTicketId = cause && typeof cause === "object" && "ticketId" in cause ? String((cause as { ticketId?: unknown }).ticketId || "") : "";
@@ -96,10 +96,10 @@ export default function NewTicketModal() {
   return (
     <Modal open={newTicketOpen} onClose={closeNewTicket} className="max-w-[660px]" ariaLabel="Créer un nouveau ticket">
       <div className="max-h-[90vh] overflow-y-auto">
-        <div className="border-b border-line px-5 py-4 pr-14 sm:px-7"><div className="flex items-center gap-2"><span className="flex h-8 w-8 items-center justify-center rounded-[9px] bg-petrol text-white"><Plus className="h-4 w-4" /></span><div><h2 className="font-headline text-[17px] font-bold tracking-[-0.02em] text-ink">{core?.user.role === "owner" ? "Créer un dossier" : "Signaler un problème"}</h2><p className="text-[9.5px] text-muted">Le dossier sera rattaché au logement sélectionné.</p></div></div></div>
+        <div className="border-b border-line px-5 py-4 pr-14 sm:px-7"><div className="flex items-center gap-2"><span className="flex h-8 w-8 items-center justify-center rounded-[9px] bg-petrol text-white"><Plus className="h-4 w-4" /></span><div><h2 className="font-headline text-[17px] font-bold tracking-[-0.02em] text-ink">{core?.user.role === "owner" ? "Créer un ticket" : "Signaler un problème"}</h2><p className="text-[9.5px] text-muted">Le ticket sera rattaché au logement sélectionné.</p></div></div></div>
         <div className="px-5 py-4 sm:px-7">
           <div className="rounded-xl border border-line bg-cream-soft px-3 py-2.5">
-            <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-muted">Logement du dossier</p>
+            <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-muted">Logement du ticket</p>
             <p className="mt-1 text-[10.5px] font-bold text-ink">{activeProperty?.address || "Aucun logement actif"}</p>
             {!eligibleProperty && <p className="mt-1 text-[9px] text-peach-dark">{core?.user.role === "owner" ? "Ce logement doit d’abord être relié à un locataire." : "Ce logement n’est pas rattaché à votre compte."}</p>}
           </div>
@@ -113,10 +113,10 @@ export default function NewTicketModal() {
           <div className="mt-3"><p className="text-[9.5px] font-bold text-ink">Pièces jointes</p><div className="mt-1.5 grid grid-cols-2 gap-1.5"><button type="button" onClick={() => photoInput.current?.click()} className="flex h-9 items-center justify-center gap-1.5 rounded-lg border border-line bg-cream-soft text-[9.5px] font-semibold text-ink hover:bg-white"><Camera className="h-3.5 w-3.5 text-sage" />Photo</button><button type="button" onClick={() => docInput.current?.click()} className="flex h-9 items-center justify-center gap-1.5 rounded-lg border border-line bg-cream-soft text-[9.5px] font-semibold text-ink hover:bg-white"><Paperclip className="h-3.5 w-3.5 text-sage" />Document</button></div><input ref={photoInput} type="file" accept="image/jpeg,image/png,image/webp" multiple className="hidden" onChange={(event) => { const files = Array.from(event.target.files || []); if (files.length) void handleFiles(files); event.target.value = ""; }} /><input ref={docInput} type="file" accept="application/pdf" multiple className="hidden" onChange={(event) => { const files = Array.from(event.target.files || []); if (files.length) void handleFiles(files); event.target.value = ""; }} /></div>
           {attachments.length > 0 && <div className="mt-2 flex flex-wrap gap-1.5">{attachments.map((attachment) => <span key={`${attachment.name}-${attachment.src.slice(-8)}`} className="flex max-w-full items-center gap-1.5 rounded-lg border border-line bg-white px-2 py-1 text-[9px] text-ink">{attachment.type === "image" ? <img src={attachment.src} alt="" className="h-5 w-5 rounded object-cover" /> : <FileText className="h-3 w-3 text-petrol" />}<span className="max-w-[140px] truncate">{attachment.name}</span><span className="text-[8px] text-muted">{attachment.size}</span><button type="button" aria-label={`Retirer ${attachment.name}`} onClick={() => setAttachments((current) => current.filter((item) => item !== attachment))} className="text-muted hover:text-danger"><X className="h-3 w-3" /></button></span>)}</div>}
 
-          <div className="mt-3 rounded-xl border border-line/70 bg-cream-soft px-3 py-2.5 text-[9px] leading-relaxed text-muted">{!eligibleProperty ? "La création nécessite un logement actif relié aux deux parties." : `Le dossier sera partagé avec ${recipient || "l’autre partie"} pour ${activeProperty?.address || "ce logement"}.`}</div>
+          <div className="mt-3 rounded-xl border border-line/70 bg-cream-soft px-3 py-2.5 text-[9px] leading-relaxed text-muted">{!eligibleProperty ? "La création nécessite un logement actif relié aux deux parties." : `Le ticket sera partagé avec ${recipient || "l’autre partie"} pour ${activeProperty?.address || "ce logement"}.`}</div>
           {error && <div className="mt-2 rounded-lg bg-peach-soft px-3 py-2 text-[9px] text-peach-dark"><p>{error}</p>{createdTicketId && <Link href={`/tickets/${createdTicketId}`} className="mt-1 inline-block font-bold underline">Ouvrir le ticket créé</Link>}</div>}
         </div>
-        <div className="sticky bottom-0 flex justify-end gap-2 border-t border-line bg-white/95 px-5 py-3.5 backdrop-blur sm:px-7"><button type="button" onClick={closeNewTicket} className="btn-soft h-9 px-3.5 text-[10.5px]">Annuler</button><button type="button" onClick={submit} disabled={submitting || loading || !eligibleProperty} className="btn-dark h-9 px-4 text-[10.5px] disabled:opacity-60">{submitting ? "Création…" : core?.user.role === "owner" ? "Créer le dossier" : "Envoyer la demande"}</button></div>
+        <div className="sticky bottom-0 flex justify-end gap-2 border-t border-line bg-white/95 px-5 py-3.5 backdrop-blur sm:px-7"><button type="button" onClick={closeNewTicket} className="btn-soft h-9 px-3.5 text-[10.5px]">Annuler</button><button type="button" onClick={submit} disabled={submitting || loading || !eligibleProperty} className="btn-dark h-9 px-4 text-[10.5px] disabled:opacity-60">{submitting ? "Création…" : core?.user.role === "owner" ? "Créer le ticket" : "Envoyer la demande"}</button></div>
       </div>
     </Modal>
   );

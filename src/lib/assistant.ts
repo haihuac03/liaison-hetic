@@ -20,8 +20,8 @@ export const ASSISTANT_SUGGESTIONS = [
 
 const DEFAULT_ANSWER: AssistantAnswer = {
   tag: "MÉDIATION AMIABLE",
-  text: "Votre question peut généralement être traitée par un échange écrit et horodaté avec votre bailleur. Décrivez les faits, joignez les photos ou documents utiles, puis proposez une solution concrète. LIAISON conserve chaque échange dans le dossier partagé et peut vous aider à formuler un message neutre, factuel et courtois.",
-  actions: ["Préparer un message", "Résumer le dossier", "Préparer une proposition"],
+  text: "Votre question peut généralement être traitée par un échange écrit et horodaté avec votre bailleur. Décrivez les faits, joignez les photos ou documents utiles, puis proposez une solution concrète. LIAISON conserve chaque échange dans le ticket partagé et peut vous aider à formuler un message neutre, factuel et courtois.",
+  actions: ["Préparer un message", "Résumer le ticket", "Préparer une proposition"],
   source: "Protocole de conciliation LIAISON",
 };
 
@@ -29,7 +29,7 @@ export function getTicketAssistant(ticket: Ticket): AssistantAnswer {
   if (ticket.id === "2841" || /fuite|siphon|plomb/i.test(ticket.title)) {
     return {
       tag: "DÉCRET 87-712",
-      text: "Le remplacement du siphon ou des canalisations d'évacuation vétustes relève des grosses réparations à la charge exclusive du bailleur. Vérifiez la répartition prévue par le bail et les échanges du dossier.",
+      text: "Le remplacement du siphon ou des canalisations d'évacuation vétustes relève des grosses réparations à la charge exclusive du bailleur. Vérifiez la répartition prévue par le bail et les échanges du ticket.",
       actions: [],
       source: "Décret n° 87-712 du 26 août 1987 · art. 2",
     };
@@ -47,7 +47,7 @@ export function getTicketAssistant(ticket: Ticket): AssistantAnswer {
   if (ticket.id === "2812") {
     return {
       tag: "RÉPARATIONS LOCATIVES",
-      text: "Le moteur d'un volet roulant fait partie des équipements dont le remplacement incombe au bailleur lorsqu'il relève de la vétusté ou d'une panne mécanique. Le PV signé sans réserve et la facture archivée sécurisent la clôture du dossier.",
+      text: "Le moteur d'un volet roulant fait partie des équipements dont le remplacement incombe au bailleur lorsqu'il relève de la vétusté ou d'une panne mécanique. Le PV signé sans réserve et la facture archivée sécurisent la clôture du ticket.",
       actions: [],
       source: "Décret n° 87-712 · équipements",
     };
@@ -63,9 +63,9 @@ export function getTicketAssistant(ticket: Ticket): AssistantAnswer {
   }
 
   return {
-    tag: "ANALYSE DU DOSSIER",
-    text: `Le dossier #${ticket.id.slice(0, 8)} est actuellement ${ticket.status === "en_cours" ? "en cours de traitement" : "suivi par LIAISON"}. Les échanges et pièces jointes sont horodatés. Une solution amiable peut être proposée sur la base des éléments déjà transmis.`,
-    actions: ["Résumer le dossier", "Rédiger un message", "Proposer une solution"],
+    tag: "ANALYSE DU TICKET",
+    text: `Le ticket #${ticket.id.slice(0, 8)} est actuellement ${ticket.status === "en_cours" ? "en cours de traitement" : "suivi par LIAISON"}. Les échanges et pièces jointes sont horodatés. Une solution amiable peut être proposée sur la base des éléments déjà transmis.`,
+    actions: ["Résumer le ticket", "Rédiger un message", "Proposer une solution"],
     source: "Protocole de conciliation LIAISON",
   };
 }
@@ -147,7 +147,7 @@ export function answerQuestion(
   if (/assurance|sinistre|dégât|degat/.test(q)) {
     return {
       tag: "ASSURANCE & SINISTRE",
-      text: "Déclarez le sinistre à votre assureur habitation dans les 5 jours ouvrés en joignant le constat amiable et les photos. Si le dommage vient d'une canalisation commune, le syndic doit être informé. Conservez les échanges LIAISON : l’historique du dossier documente la chronologie.",
+      text: "Déclarez le sinistre à votre assureur habitation dans les 5 jours ouvrés en joignant le constat amiable et les photos. Si le dommage vient d'une canalisation commune, le syndic doit être informé. Conservez les échanges LIAISON : l’historique du ticket documente la chronologie.",
       actions: [],
       source: "Code des assurances · art. L113-2",
     };

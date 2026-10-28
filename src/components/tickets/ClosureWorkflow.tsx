@@ -58,7 +58,7 @@ export default function ClosureWorkflow({ ticket, onCreate }: { ticket: Ticket; 
       });
       await refresh();
       setDecision(null);
-      showToast(decision === "accept" ? "Clôture acceptée" : "Demande refusée", decision === "accept" ? "Le dossier est maintenant fermé." : "Vous pouvez proposer une nouvelle demande.");
+      showToast(decision === "accept" ? "Clôture acceptée" : "Demande refusée", decision === "accept" ? "Le ticket est maintenant fermé." : "Vous pouvez proposer une nouvelle demande.");
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "La réponse n’a pas pu être enregistrée.");
     } finally {
@@ -73,7 +73,7 @@ export default function ClosureWorkflow({ ticket, onCreate }: { ticket: Ticket; 
       <div className="flex flex-wrap items-center justify-between gap-2 bg-sage-soft px-4 py-3">
         <div className="flex items-center gap-2.5">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sage text-white"><Handshake className="h-4 w-4" /></span>
-          <div><h2 className="font-headline text-[13px] font-bold text-sage-dark">{readOnly ? "Accord enregistré" : "Clôture du dossier"}</h2><p className="mt-0.5 text-[8.5px] text-muted">{readOnly ? "Le dossier est en lecture seule." : "La demande doit être acceptée par l’autre partie."}</p></div>
+          <div><h2 className="font-headline text-[13px] font-bold text-sage-dark">{readOnly ? "Accord enregistré" : "Clôture du ticket"}</h2><p className="mt-0.5 text-[8.5px] text-muted">{readOnly ? "Le ticket est en lecture seule." : "La demande doit être acceptée par l’autre partie."}</p></div>
         </div>
         {!readOnly && latest && ((pending && rowText(latest, "requester_id", "proposer_id") === userId) || (!pending && ["refused", "declined", "replaced"].includes(rowStatus(latest)))) && <button type="button" onClick={onCreate} className="btn-soft h-8 px-3 text-[8.5px]"><RotateCcw className="h-3 w-3" /> {pending ? "Modifier ma demande" : "Remplacer la demande"}</button>}
       </div>
@@ -114,7 +114,7 @@ export default function ClosureWorkflow({ ticket, onCreate }: { ticket: Ticket; 
       </div>
 
       <Modal open={Boolean(decision)} onClose={() => !busy && setDecision(null)} className="max-w-[520px]" ariaLabel="Répondre à la demande de clôture">
-        {decision && <div className="p-5 sm:p-6"><h2 className="font-headline text-[16px] font-bold text-ink">{decision === "accept" ? "Accepter la clôture" : "Refuser la demande"}</h2><p className="mt-1 text-[9px] leading-relaxed text-muted">L’acceptation ferme le dossier. Le refus doit pouvoir être compris par l’autre partie.</p><label className="mt-3 block text-[9px] font-bold text-ink">Motif {decision === "refuse" ? <span className="text-danger">*</span> : <span className="font-normal text-muted">(facultatif)</span>}<textarea value={reason} onChange={(event) => setReason(event.target.value)} rows={3} className="field mt-1 resize-none py-2 text-[10px]" /></label>{error && <p className="mt-2 rounded-lg bg-peach-soft px-3 py-2 text-[9px] text-peach-dark">{error}</p>}<div className="mt-3 flex justify-end gap-2"><button type="button" onClick={() => setDecision(null)} disabled={busy} className="btn-soft h-9 px-3.5 text-[10px]">Annuler</button><button type="button" onClick={submit} disabled={busy} className={cn("h-9 px-4 text-[10px] disabled:opacity-60", decision === "accept" ? "btn-sage" : "btn-dark")}>{busy ? "Enregistrement…" : "Confirmer"}</button></div></div>}
+        {decision && <div className="p-5 sm:p-6"><h2 className="font-headline text-[16px] font-bold text-ink">{decision === "accept" ? "Accepter la clôture" : "Refuser la demande"}</h2><p className="mt-1 text-[9px] leading-relaxed text-muted">L’acceptation ferme le ticket. Le refus doit pouvoir être compris par l’autre partie.</p><label className="mt-3 block text-[9px] font-bold text-ink">Motif {decision === "refuse" ? <span className="text-danger">*</span> : <span className="font-normal text-muted">(facultatif)</span>}<textarea value={reason} onChange={(event) => setReason(event.target.value)} rows={3} className="field mt-1 resize-none py-2 text-[10px]" /></label>{error && <p className="mt-2 rounded-lg bg-peach-soft px-3 py-2 text-[9px] text-peach-dark">{error}</p>}<div className="mt-3 flex justify-end gap-2"><button type="button" onClick={() => setDecision(null)} disabled={busy} className="btn-soft h-9 px-3.5 text-[10px]">Annuler</button><button type="button" onClick={submit} disabled={busy} className={cn("h-9 px-4 text-[10px] disabled:opacity-60", decision === "accept" ? "btn-sage" : "btn-dark")}>{busy ? "Enregistrement…" : "Confirmer"}</button></div></div>}
       </Modal>
     </section>
   );

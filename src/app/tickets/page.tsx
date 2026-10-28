@@ -58,8 +58,8 @@ export default function TicketsPage() {
 
   const counts = (key: FilterKey) => key === "all" ? tickets.length : tickets.filter((ticket) => ticket.status === key).length;
   const statCards = [
-    { label: "Tous les dossiers", value: stats.total, note: "Visibles pour ce compte", icon: FileStack, tile: "bg-cream-soft text-petrol" },
-    { label: "Dossiers actifs", value: stats.active, note: "Non fermés", icon: Wrench, tile: "bg-peach-soft text-peach-dark" },
+    { label: "Tous les tickets", value: stats.total, note: "Visibles pour ce compte", icon: FileStack, tile: "bg-cream-soft text-petrol" },
+    { label: "Tickets actifs", value: stats.active, note: "Non fermés", icon: Wrench, tile: "bg-peach-soft text-peach-dark" },
     { label: "Interventions suivies", value: stats.intervention, note: "Action actuellement ouverte", icon: Handshake, tile: "bg-sky-soft text-sky-dark" },
     { label: "Litiges ouverts", value: stats.disputes, note: `${stats.agreements} accord${stats.agreements > 1 ? "s" : ""} enregistré${stats.agreements > 1 ? "s" : ""}`, icon: ShieldAlert, tile: "bg-peach-soft text-peach-dark" },
   ];
@@ -68,7 +68,7 @@ export default function TicketsPage() {
     <AppShell>
       <div className="animate-fade-up">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div><p className="eyebrow flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sage" />Dossiers du logement actif</p><h1 className="mt-1.5 font-headline text-[30px] font-extrabold tracking-[-0.04em] text-ink sm:text-[34px]">Dossiers</h1><p className="mt-1.5 max-w-xl text-[12.5px] leading-relaxed text-muted">Retrouvez les dossiers, interventions et décisions de {activeProperty?.address || "votre logement actif"}.</p></div>
+          <div><p className="eyebrow flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sage" />Tickets du logement actif</p><h1 className="mt-1.5 font-headline text-[30px] font-extrabold tracking-[-0.04em] text-ink sm:text-[34px]">Tickets</h1><p className="mt-1.5 max-w-xl text-[12.5px] leading-relaxed text-muted">Retrouvez les tickets, interventions et décisions de {activeProperty?.address || "votre logement actif"}.</p></div>
           {canCreate && <button type="button" onClick={() => openNewTicket()} className="btn-dark h-10 shrink-0 px-4"><Plus className="h-4 w-4" strokeWidth={2.2} />Nouveau ticket</button>}
         </header>
 
@@ -83,15 +83,15 @@ export default function TicketsPage() {
 
         <div className="mt-3 grid gap-3.5 xl:grid-cols-[1.7fr_1fr]">
           <div>
-            {filtered.length === 0 ? <div className="card flex flex-col items-center justify-center px-6 py-16 text-center"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-cream-soft text-muted"><TicketIcon className="h-5 w-5" /></div><h2 className="mt-3 font-headline text-[16px] font-bold text-ink">Aucun dossier trouvé</h2><p className="mt-1 max-w-xs text-[10.5px] leading-relaxed text-muted">Modifiez les filtres ou ouvrez un dossier pour ce logement.</p>{canCreate && <button type="button" onClick={() => openNewTicket()} className="btn-dark mt-3 h-9 px-4 text-[10px]"><Plus className="h-3.5 w-3.5" />{user?.role === "owner" ? "Créer un dossier" : "Signaler un problème"}</button>}</div> : <div className={cn("grid gap-2.5", view === "grid" && "md:grid-cols-2")} onClickCapture={() => activeProperty && setActiveProperty(activeProperty.id)}>{filtered.map((ticket) => <TicketCard key={ticket.id} ticket={ticket} compact={view === "grid"} />)}</div>}
-            <div className="mt-3 rounded-xl border border-line/70 bg-white/45 px-3.5 py-2.5 text-[9px] leading-relaxed text-muted">La chronologie de chaque dossier provient de ses événements enregistrés.</div>
+            {filtered.length === 0 ? <div className="card flex flex-col items-center justify-center px-6 py-16 text-center"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-cream-soft text-muted"><TicketIcon className="h-5 w-5" /></div><h2 className="mt-3 font-headline text-[16px] font-bold text-ink">Aucun ticket trouvé</h2><p className="mt-1 max-w-xs text-[10.5px] leading-relaxed text-muted">Modifiez les filtres ou ouvrez un ticket pour ce logement.</p>{canCreate && <button type="button" onClick={() => openNewTicket()} className="btn-dark mt-3 h-9 px-4 text-[10px]"><Plus className="h-3.5 w-3.5" />{user?.role === "owner" ? "Créer un ticket" : "Signaler un problème"}</button>}</div> : <div className={cn("grid gap-2.5", view === "grid" && "md:grid-cols-2")} onClickCapture={() => activeProperty && setActiveProperty(activeProperty.id)}>{filtered.map((ticket) => <TicketCard key={ticket.id} ticket={ticket} compact={view === "grid"} />)}</div>}
+            <div className="mt-3 rounded-xl border border-line/70 bg-white/45 px-3.5 py-2.5 text-[9px] leading-relaxed text-muted">La chronologie de chaque ticket provient de ses événements enregistrés.</div>
           </div>
           <aside className="flex flex-col gap-3">
             <section className="card p-4">
-              <p className="eyebrow">Dossier actif</p>
+              <p className="eyebrow">Ticket actif</p>
               <h2 className="mt-2 font-headline text-[16px] font-bold text-ink">{activeProperty?.address || "Aucun logement actif"}</h2>
-              <p className="mt-1 text-[10px] leading-relaxed text-muted">{tickets.length} dossier{tickets.length > 1 ? "s" : ""} dans ce logement.</p>
-              {canCreate ? <button type="button" onClick={() => openNewTicket()} className="btn-dark mt-3 h-9 w-full text-[10px]"><Plus className="h-3.5 w-3.5" />{user?.role === "owner" ? "Créer un dossier" : "Signaler un problème"}</button> : <p className="mt-3 rounded-xl bg-cream-soft p-3 text-[9px] leading-relaxed text-muted">Ce logement doit être relié à un locataire pour ouvrir un dossier partagé.</p>}
+              <p className="mt-1 text-[10px] leading-relaxed text-muted">{tickets.length} ticket{tickets.length > 1 ? "s" : ""} dans ce logement.</p>
+              {canCreate ? <button type="button" onClick={() => openNewTicket()} className="btn-dark mt-3 h-9 w-full text-[10px]"><Plus className="h-3.5 w-3.5" />{user?.role === "owner" ? "Créer un ticket" : "Signaler un problème"}</button> : <p className="mt-3 rounded-xl bg-cream-soft p-3 text-[9px] leading-relaxed text-muted">Ce logement doit être relié à un locataire pour ouvrir un ticket partagé.</p>}
             </section>
           </aside>
         </div>

@@ -143,7 +143,7 @@ export default function Topbar() {
               title={!activeProperty ? "Sélectionnez un logement" : role === "owner" && !activeProperty.tenant_id ? "Ce logement doit d’abord être relié à un locataire" : undefined}
             >
               <Plus className="h-4 w-4" strokeWidth={2.2} />
-              <span>{role === "owner" ? "Créer un dossier" : "Signaler un problème"}</span>
+              <span>{role === "owner" ? "Créer un ticket" : "Signaler un problème"}</span>
             </button>
           )}
 

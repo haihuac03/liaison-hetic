@@ -12,7 +12,7 @@ const LABELS: Record<string, string> = {
   "ticket.created": "Ticket créé",
   "ticket.status": "Statut modifié",
   "ticket.status_changed": "Statut modifié",
-  "ticket.reopened": "Dossier réouvert",
+  "ticket.reopened": "Ticket réouvert",
   "message.created": "Message ajouté",
   "file.uploaded": "Pièce jointe ajoutée",
   "intervention.proposed": "Intervention proposée",
@@ -110,7 +110,7 @@ export default function TicketTimeline({ ticket }: { ticket: Ticket }) {
   return (
     <section className="card p-4">
       <div className="flex items-start justify-between gap-2">
-        <div><h2 className="flex items-center gap-1.5 font-headline text-[14px] font-bold leading-tight tracking-[-0.02em] text-ink"><History className="h-3.5 w-3.5 text-petrol" /> Historique</h2><p className="mt-1 text-[8.5px] text-muted">Événements enregistrés dans le dossier</p></div>
+        <div><h2 className="flex items-center gap-1.5 font-headline text-[14px] font-bold leading-tight tracking-[-0.02em] text-ink"><History className="h-3.5 w-3.5 text-petrol" /> Historique</h2><p className="mt-1 text-[8.5px] text-muted">Événements enregistrés dans le ticket</p></div>
         <button type="button" onClick={() => void load(false)} disabled={loading} className="icon-btn h-7 w-7 rounded-lg" aria-label="Actualiser l’historique"><RefreshCw className={`h-3 w-3 ${loading ? "animate-spin" : ""}`} /></button>
       </div>
       {error && <p className="mt-3 rounded-lg bg-peach-soft px-2.5 py-2 text-[8.5px] text-peach-dark">{error}</p>}

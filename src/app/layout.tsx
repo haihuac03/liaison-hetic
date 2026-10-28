@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "LIAISON — Votre logement, en confiance",
   description:
-    "LIAISON réunit locataires, propriétaires et artisans autour d'un dossier unique : tickets, conversations, négociations, interventions et documents enregistrés.",
+    "LIAISON réunit locataires, propriétaires et artisans autour d'un ticket unique : tickets, conversations, négociations, interventions et documents enregistrés.",
 };
 
 export default function RootLayout({

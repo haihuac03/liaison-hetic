@@ -49,8 +49,8 @@ const TABS: { key: Tab; label: string; icon: typeof UserRound }[] = [
 ];
 
 const NOTIFICATION_SETTINGS = [
-  { id: "messages", label: "Nouveaux messages", detail: "Messages liés à vos dossiers et documents", default: true },
-  { id: "tickets", label: "Mises à jour de dossiers", detail: "Changement de statut, validation, clôture", default: true },
+  { id: "messages", label: "Nouveaux messages", detail: "Messages liés à vos tickets et documents", default: true },
+  { id: "tickets", label: "Mises à jour de tickets", detail: "Changement de statut, validation, clôture", default: true },
   { id: "interventions", label: "Interventions & rendez-vous", detail: "Confirmation, rappel J-1, compte-rendu", default: true },
   { id: "documents", label: "Nouveaux documents", detail: "Quittances, devis, accords et constats", default: true },
   { id: "weekly", label: "Résumé hebdomadaire", detail: "Chaque lundi, l'état de votre logement", default: false },
@@ -451,7 +451,7 @@ export default function SettingsPage() {
                       <span className="min-w-0 flex-1">
                         <span className="block text-[9.5px] font-bold text-ink">Exporter mes données</span>
                         <span className="block text-[8px] text-muted">
-                          {tickets.length} dossiers · {documents.length} documents · format JSON
+                          {tickets.length} tickets · {documents.length} documents · format JSON
                         </span>
                       </span>
                       <ChevronRight className="h-3.5 w-3.5 text-muted/40" />
@@ -538,7 +538,7 @@ export default function SettingsPage() {
             <section className="card p-4">
               <h2 className="text-[10.5px] font-bold text-ink">Besoin d&apos;aide ?</h2>
               <p className="mt-1 text-[8.5px] leading-relaxed text-muted">
-                Consultez les réponses fonctionnelles ou échangez avec l’autre partie dans un dossier.
+                Consultez les réponses fonctionnelles ou échangez avec l’autre partie dans un ticket.
               </p>
               <Link
                 href="/aide"

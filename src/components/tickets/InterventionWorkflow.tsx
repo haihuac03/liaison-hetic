@@ -135,7 +135,7 @@ export default function InterventionWorkflow({ ticket }: { ticket: Ticket }) {
           </span>
           <div>
             <h2 className="font-headline text-[13px] font-bold text-ink">Interventions</h2>
-            <p className="mt-0.5 text-[8.5px] text-muted">Propositions et décisions enregistrées dans le dossier</p>
+            <p className="mt-0.5 text-[8.5px] text-muted">Propositions et décisions enregistrées dans le ticket</p>
           </div>
         </div>
         {role === "owner" && !readOnly && !hasOpenProposal && (
@@ -148,7 +148,7 @@ export default function InterventionWorkflow({ ticket }: { ticket: Ticket }) {
       <div className="space-y-2 p-3.5">
         {rows.length === 0 && (
           <p className="rounded-xl bg-cream-soft px-3 py-5 text-center text-[9.5px] text-muted">
-            {role === "owner" && !readOnly ? "Aucune intervention proposée dans ce dossier." : "Le propriétaire n’a pas encore proposé d’intervention."}
+            {role === "owner" && !readOnly ? "Aucune intervention proposée dans ce ticket." : "Le propriétaire n’a pas encore proposé d’intervention."}
           </p>
         )}
         {rows.map((row) => {
@@ -203,7 +203,7 @@ export default function InterventionWorkflow({ ticket }: { ticket: Ticket }) {
           <div className="max-h-[90vh] overflow-y-auto">
             <div className="border-b border-line px-5 py-4 pr-14 sm:px-7">
               <h2 className="font-headline text-[16px] font-bold text-ink">{ACTION_TITLES[action]}</h2>
-              <p className="mt-0.5 text-[9px] text-muted">Dossier #{ticket.id.slice(0, 8)}</p>
+              <p className="mt-0.5 text-[9px] text-muted">Ticket #{ticket.id.slice(0, 8)}</p>
             </div>
             <div className="space-y-3 px-5 py-4 sm:px-7">
               {action === "propose" ? (

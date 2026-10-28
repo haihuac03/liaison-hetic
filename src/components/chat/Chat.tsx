@@ -94,22 +94,22 @@ export default function Chat({
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
-      showToast("Lien du dossier copié", "Partagez-le avec une partie prenante de confiance.");
+      showToast("Lien du ticket copié", "Partagez-le avec une partie prenante de confiance.");
     } catch {
-      showToast("Lien du dossier", window.location.href, "info");
+      showToast("Lien du ticket", window.location.href, "info");
     }
   };
 
   const exportThread = () => {
     const content = [
-      `LIAISON — Dossier #${current.id}`,
+      `LIAISON — Ticket #${current.id}`,
       current.title,
       "",
       ...current.messages.map(
         (message) => `[${message.time}] ${message.authorName} : ${message.text}`,
       ),
       "",
-      "Export local des messages enregistrés dans le dossier.",
+      "Export local des messages enregistrés dans le ticket.",
     ].join("\n");
     downloadText(`LIAISON_ticket_${current.id}.txt`, content);
     showToast("Conversation exportée", "Le journal horodaté a été téléchargé.");
@@ -128,7 +128,7 @@ export default function Chat({
               <h2 className="truncate font-headline text-[13px] font-bold text-ink">{current.assignee}</h2>
               <span className="chip bg-cream-soft text-[#5F686B]">{current.correspondentRole || "Bailleur"}</span>
             </div>
-            <p className="mt-0.5 text-[8.5px] text-muted">{current.address || "Conversation du dossier"}</p>
+            <p className="mt-0.5 text-[8.5px] text-muted">{current.address || "Conversation du ticket"}</p>
           </div>
           <button
             type="button"
@@ -185,7 +185,7 @@ export default function Chat({
           <div className="flex items-center justify-center gap-1.5 px-3 pb-1.5 pt-2">
             <Lock className="h-2.5 w-2.5 text-muted/70" />
             <p className="text-center text-[7.5px] leading-tight text-muted/80">
-              Les messages ajoutés sont enregistrés dans ce dossier.
+              Les messages ajoutés sont enregistrés dans ce ticket.
             </p>
           </div>
 
@@ -193,7 +193,7 @@ export default function Chat({
             <div className="px-3 pb-3">
               <div className="flex items-center justify-center gap-1.5 rounded-xl bg-cream-soft px-3 py-2.5 text-[9px] font-medium text-muted">
                 <Lock className="h-3 w-3" />
-                Dossier fermé — les échanges restent consultables.
+                Ticket fermé — les échanges restent consultables.
               </div>
             </div>
           ) : (

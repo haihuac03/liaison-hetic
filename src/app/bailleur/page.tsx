@@ -37,15 +37,15 @@ export default function OwnerPage() {
           <div>
             <div className="flex items-center gap-2"><RoleBadge role="owner" /><span className="text-[10px] font-semibold text-muted">Portefeuille</span></div>
             <h1 className="mt-2 font-headline text-[30px] font-extrabold tracking-tight text-ink">Mes logements</h1>
-            <p className="mt-2 max-w-2xl text-sm text-muted">Choisissez un logement pour limiter les dossiers, baux et loyers affichés à ce contexte.</p>
+            <p className="mt-2 max-w-2xl text-sm text-muted">Choisissez un logement pour limiter les tickets, baux et loyers affichés à ce contexte.</p>
           </div>
-          <button onClick={() => openNewTicket()} disabled={!activeProperty?.tenant_id} className="btn-dark h-10 disabled:opacity-50"><Plus className="h-4 w-4" />Créer un dossier</button>
+          <button onClick={() => openNewTicket()} disabled={!activeProperty?.tenant_id} className="btn-dark h-10 disabled:opacity-50"><Plus className="h-4 w-4" />Créer un ticket</button>
         </header>
 
         <div className="mt-5 grid gap-3 sm:grid-cols-3">
           {[
             { label: "Logements", value: properties.length, detail: `${linked.length} avec locataire` },
-            { label: "Dossiers du logement actif", value: activeTickets.length, detail: activeProperty?.address || "Aucun contexte" },
+            { label: "Tickets du logement actif", value: activeTickets.length, detail: activeProperty?.address || "Aucun contexte" },
             { label: "Clôtures à décider", value: scopedTickets.filter((ticket) => ticket.status === "en_cloture").length, detail: "Pour le logement actif" },
           ].map((stat) => (
             <div key={stat.label} className="card p-4">
@@ -67,7 +67,7 @@ export default function OwnerPage() {
                   <button key={property.id} type="button" onClick={() => setActiveProperty(property.id)} className={cn("rounded-xl border p-3 text-left transition", selected ? "border-petrol bg-petrol text-white" : "border-line bg-cream-soft/70 hover:border-petrol/30 hover:bg-white")}>
                     <div className="flex items-center justify-between gap-2"><p className="truncate text-sm font-bold">{property.address}</p>{selected && <CheckCircle2 className="h-4 w-4 shrink-0" />}</div>
                     <p className={cn("mt-1 flex items-center gap-1 text-[9px]", selected ? "text-white/65" : "text-muted")}><UserRound className="h-3 w-3" />{property.tenant_name || "Aucun locataire rattaché"}</p>
-                    {count !== undefined && <p className="mt-1 text-[9px] text-white/55">{count} dossier{count > 1 ? "s" : ""}</p>}
+                    {count !== undefined && <p className="mt-1 text-[9px] text-white/55">{count} ticket{count > 1 ? "s" : ""}</p>}
                   </button>
                 );
               })}
@@ -77,12 +77,12 @@ export default function OwnerPage() {
           </section>
 
           <section className="card p-4 sm:p-5">
-            <div className="flex items-center justify-between gap-2"><div><h2 className="font-headline text-lg font-bold">Dossiers à suivre</h2><p className="mt-1 text-xs text-muted">{activeProperty?.address || "Sélectionnez un logement"}</p></div><Ticket className="h-4 w-4 text-sage" /></div>
+            <div className="flex items-center justify-between gap-2"><div><h2 className="font-headline text-lg font-bold">Tickets à suivre</h2><p className="mt-1 text-xs text-muted">{activeProperty?.address || "Sélectionnez un logement"}</p></div><Ticket className="h-4 w-4 text-sage" /></div>
             <div className="mt-4 flex flex-col gap-2">
               {activeTickets.map((ticket) => <TicketCard key={ticket.id} ticket={ticket} />)}
-              {!activeTickets.length && <p className="rounded-xl bg-cream-soft p-5 text-sm text-muted">Aucun dossier actif pour ce logement.</p>}
+              {!activeTickets.length && <p className="rounded-xl bg-cream-soft p-5 text-sm text-muted">Aucun ticket actif pour ce logement.</p>}
             </div>
-            <Link href="/tickets" className="mt-4 flex items-center gap-1.5 text-xs font-bold text-sage">Voir les dossiers du logement actif <ArrowRight className="h-3 w-3" /></Link>
+            <Link href="/tickets" className="mt-4 flex items-center gap-1.5 text-xs font-bold text-sage">Voir les tickets du logement actif <ArrowRight className="h-3 w-3" /></Link>
           </section>
         </div>
       </div>

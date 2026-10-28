@@ -44,7 +44,7 @@ export default function TicketCard({ ticket, compact = false }: { ticket: Ticket
 
         <div className="mt-2.5 flex items-center justify-between gap-2">
           <p className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-[8.5px] font-medium text-muted"><span className="flex items-center gap-1"><FileText className="h-2.5 w-2.5" />{photos} photo{photos > 1 ? "s" : ""}</span><span className="flex items-center gap-1"><Paperclip className="h-2.5 w-2.5" />{pdfs} document{pdfs > 1 ? "s" : ""}</span></p>
-          <Link href={`/tickets/${ticket.id}`} className="group/btn flex h-8 shrink-0 items-center gap-1.5 rounded-lg bg-cream-soft px-3 text-[9.5px] font-bold text-ink transition hover:bg-petrol hover:text-white">{ticket.status === "ferme" ? "Voir l’accord et l’historique" : "Ouvrir le dossier"}<ChevronRight className="h-3 w-3 transition group-hover/btn:translate-x-0.5" /></Link>
+          <Link href={`/tickets/${ticket.id}`} className="group/btn flex h-8 shrink-0 items-center gap-1.5 rounded-lg bg-cream-soft px-3 text-[9.5px] font-bold text-ink transition hover:bg-petrol hover:text-white">{ticket.status === "ferme" ? "Voir l’accord et l’historique" : "Ouvrir le ticket"}<ChevronRight className="h-3 w-3 transition group-hover/btn:translate-x-0.5" /></Link>
         </div>
       </div>
     </article>

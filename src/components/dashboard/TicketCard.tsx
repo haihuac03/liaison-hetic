@@ -21,7 +21,7 @@ export default function TicketCard({ ticket }: { ticket: Ticket }) {
 
   const footer = {
     icon: ticket.status === "ferme" || ticket.status === "resolu" ? CheckCircle2 : MessageSquare,
-    text: ticket.status === "ferme" ? "Dossier fermé · historique consultable" : status.description,
+    text: ticket.status === "ferme" ? "Ticket fermé · historique consultable" : status.description,
   };
 
   const FooterIcon = footer.icon;

@@ -133,7 +133,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
         await uploadAttachments(created.id, payload.attachments.map((item, index) => typeof item === "string" ? { src: item, alt: `Pièce jointe ${index + 1}`, name: `piece-${index + 1}` } : item));
       } catch (error) {
         await session.refresh();
-        throw Object.assign(new Error(`Le ticket a été créé, mais une pièce jointe a échoué : ${error instanceof Error ? error.message : "réessayez depuis le dossier"}`), { ticketId: created.id });
+        throw Object.assign(new Error(`Le ticket a été créé, mais une pièce jointe a échoué : ${error instanceof Error ? error.message : "réessayez depuis le ticket"}`), { ticketId: created.id });
       }
       const core = await coreRequest<import("./client/core").CoreState>("state");
       const mapped = mapCoreState(core);
@@ -155,7 +155,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
       shortTitle: payload.title,
       category: payload.category,
       status: "ouvert",
-      badge: "Nouveau dossier",
+      badge: "Nouveau ticket",
       badgeTone: "blue",
       createdAt: `${nowDate()} à ${time}`,
       updatedAt: "À l'instant",
@@ -178,7 +178,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
           author: "system",
           authorName: "LIAISON",
           time,
-          text: `Dossier transmis à Claire Bernard · motif : ${category.label}.`,
+          text: `Ticket transmis à Claire Bernard · motif : ${category.label}.`,
           system: true,
         },
       ],
@@ -199,7 +199,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
         },
         {
           id: uid("step"),
-          title: "Qualification du dossier",
+          title: "Qualification du ticket",
           detail: "Analyse du motif et des pièces",
           state: "locked",
         },
@@ -236,7 +236,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
       notifications: [
         {
           id: uid("notif"),
-          title: "Nouveau dossier créé",
+          title: "Nouveau ticket créé",
           detail: `Ticket #${id} — ${payload.title}`,
           time: "À l'instant",
           read: false,
@@ -288,7 +288,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
               author: "system",
               authorName: "LIAISON",
               time,
-              text: `Statut du dossier mis à jour : ${meta.label.toLowerCase()}.`,
+              text: `Statut du ticket mis à jour : ${meta.label.toLowerCase()}.`,
               system: true,
             },
           ],
@@ -586,7 +586,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
               authorName: "Claire Bernard",
               role: "Bailleur",
               time,
-              text: "Merci Thomas, votre proposition me convient. J'accepte le montant de " + (ticket.negotiation.tenantCounter ?? 1065).toLocaleString("fr-FR") + " € / mois. Nous pouvons clôturer le dossier avec accord.",
+              text: "Merci Thomas, votre proposition me convient. J'accepte le montant de " + (ticket.negotiation.tenantCounter ?? 1065).toLocaleString("fr-FR") + " € / mois. Nous pouvons clôturer le ticket avec accord.",
             },
             {
               id: uid("msg"),
@@ -653,7 +653,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
             author: "system",
             authorName: "LIAISON",
             time,
-            text: `Accord ${agreement.id} signé et horodaté. Le dossier est clôturé et archivé.`,
+            text: `Accord ${agreement.id} signé et horodaté. Le ticket est clôturé et archivé.`,
             system: true,
           },
         ],
@@ -679,7 +679,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
         notifications: [
           {
             id: uid("notif"),
-            title: "Accord signé et dossier clôturé",
+            title: "Accord signé et ticket clôturé",
             detail: `${agreement.id} — ${input.subject}`,
             time: "À l'instant",
             read: false,
@@ -704,7 +704,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
         badgeTone: "orange",
         closedAt: undefined,
         updatedAt: "À l'instant",
-        progress: { ...ticket.progress, step: Math.max(1, ticket.progress.total - 2), label: "Dossier réouvert" },
+        progress: { ...ticket.progress, step: Math.max(1, ticket.progress.total - 2), label: "Ticket réouvert" },
         timeline: ticket.timeline.map((step, index) =>
           index === ticket.timeline.length - 1
             ? { ...step, state: "locked" as const }
@@ -717,7 +717,7 @@ function LiaisonStateProvider({ children }: { children: ReactNode }) {
             author: "system",
             authorName: "LIAISON",
             time,
-            text: "Le dossier a été réouvert. Les échanges reprennent et restent horodatés.",
+            text: "Le ticket a été réouvert. Les échanges reprennent et restent horodatés.",
             system: true,
           },
         ],

@@ -43,7 +43,7 @@ const WELCOME: AssistantMessage = {
   role: "assistant",
   time: "À l'instant",
   tag: "ASSISTANT LIAISON",
-  text: "Bonjour. Je peux vous aider à comprendre une clause de votre bail, préparer un message à l’autre partie ou identifier les pièces utiles de votre dossier.",
+  text: "Bonjour. Je peux vous aider à comprendre une clause de votre bail, préparer un message à l’autre partie ou identifier les pièces utiles de votre ticket.",
   source: "Informations du logement actif",
   actions: [
     "Résumer ma situation",
@@ -144,7 +144,7 @@ export default function AssistantPage() {
     if (/message|rédiger|rediger|préparer/i.test(action)) {
       const recipient = user?.role === "owner" ? activeProperty?.tenant_name : activeProperty?.owner_name;
       setInput(
-        `Bonjour ${recipient || "votre interlocuteur"}, je souhaite revenir sur le dossier « ${linkedTicket?.title || "notre logement"} ». Voici les éléments factuels dont je dispose :`,
+        `Bonjour ${recipient || "votre interlocuteur"}, je souhaite revenir sur le ticket « ${linkedTicket?.title || "notre logement"} ». Voici les éléments factuels dont je dispose :`,
       );
       showToast("Brouillon préparé", "Vous pouvez compléter le message avant de l'envoyer.", "info");
       return;
@@ -153,19 +153,19 @@ export default function AssistantPage() {
       showToast("Documents", "Ajoutez et consultez les pièces depuis la page Documents du logement actif.", "info");
       return;
     }
-    if (/dossier|situation|résumer|resumer/i.test(action)) {
-      send("Résume ma situation et les prochaines étapes de mes dossiers.");
+    if (/ticket|situation|résumer|resumer/i.test(action)) {
+      send("Résume ma situation et les prochaines étapes de mes tickets.");
       return;
     }
     if (/clôturer|cloturer|accord/i.test(action)) {
       showToast(
         "Clôture avec accord",
-        "Finalisez d'abord la négociation puis signez l'accord depuis le dossier concerné.",
+        "Finalisez d'abord la négociation puis signez l'accord depuis le ticket concerné.",
         "info",
       );
       return;
     }
-    showToast("Action disponible", `${action} — retrouvez les détails dans le dossier lié.`, "info");
+    showToast("Action disponible", `${action} — retrouvez les détails dans le ticket lié.`, "info");
   };
 
   const resetConversation = () => {
@@ -186,7 +186,7 @@ export default function AssistantPage() {
               Assistant LIAISON
               <span className="text-muted/50">·</span>
               <span className="font-medium normal-case tracking-normal text-muted">
-                Analyse de votre dossier
+                Analyse de votre ticket
               </span>
             </p>
             <h1 className="mt-1.5 font-headline text-[30px] font-extrabold tracking-[-0.04em] text-ink sm:text-[34px]">
@@ -471,7 +471,7 @@ export default function AssistantPage() {
                 ))}
               </div>
               <p className="mt-2 rounded-lg bg-cream-soft px-2.5 py-2 text-[7.5px] leading-relaxed text-muted">
-                Les réponses sont générées à partir de ces sources et de votre dossier. Vérifiez
+                Les réponses sont générées à partir de ces sources et de votre ticket. Vérifiez
                 toujours la version en vigueur du texte.
               </p>
             </section>
@@ -490,13 +490,13 @@ export default function AssistantPage() {
                   className="flex h-8 items-center gap-2 rounded-lg bg-cream-soft px-2.5 text-left text-[8.5px] font-semibold text-ink transition hover:bg-cream-dark"
                 >
                   <MessageSquarePlus className="h-3 w-3 text-sage" />
-                  Ouvrir un dossier
+                  Ouvrir un ticket
                   <ArrowUpRight className="ml-auto h-3 w-3 text-muted" />
                 </button>
                 <button
                   type="button"
                   onClick={() => {
-                    setInput("Peux-tu résumer les points d'accord et de désaccord de mon dossier ?");
+                    setInput("Peux-tu résumer les points d'accord et de désaccord de mon ticket ?");
                     showToast("Question préremplie", "Appuyez sur Envoyer pour l'analyser.", "info");
                   }}
                   className="flex h-8 items-center gap-2 rounded-lg bg-cream-soft px-2.5 text-left text-[8.5px] font-semibold text-ink transition hover:bg-cream-dark"

@@ -29,7 +29,7 @@ export const STATUS_META: Record<
     chip: "bg-sky text-sky-dark",
     dot: "bg-sky-dark",
     accent: "bg-sky-dark",
-    description: "Le dossier est ouvert aux deux parties.",
+    description: "Le ticket est ouvert aux deux parties.",
   },
   en_cours: {
     label: "En cours",
@@ -49,7 +49,7 @@ export const STATUS_META: Record<
     accent: "bg-[#B7BCBD]",
     description: "Une réponse ou une pièce est attendue.",
   },
-  en_litige: { label: "En litige", short: "Litige", tone: "orange", chip: "bg-peach text-peach-dark", dot: "bg-red-600", accent: "bg-red-600", description: "Un désaccord a été signalé dans ce dossier." },
+  en_litige: { label: "En litige", short: "Litige", tone: "orange", chip: "bg-peach text-peach-dark", dot: "bg-red-600", accent: "bg-red-600", description: "Un désaccord a été signalé dans ce ticket." },
   en_cloture: { label: "Clôture à confirmer", short: "Clôture", tone: "blue", chip: "bg-sky text-sky-dark", dot: "bg-sky-dark", accent: "bg-sky-dark", description: "Une demande de clôture attend la réponse de l’autre partie." },
   en_negociation: {
     label: "En négociation",
@@ -67,7 +67,7 @@ export const STATUS_META: Record<
     chip: "bg-sage-light text-sage-dark",
     dot: "bg-sage",
     accent: "bg-sage",
-    description: "Le dossier a trouvé une issue favorable.",
+    description: "Le ticket a trouvé une issue favorable.",
   },
   ferme: {
     label: "Fermé",
@@ -76,7 +76,7 @@ export const STATUS_META: Record<
     chip: "bg-cream-dark text-[#60696B]",
     dot: "bg-[#8B9294]",
     accent: "bg-[#AAB0B1]",
-    description: "Le dossier est archivé.",
+    description: "Le ticket est archivé.",
   },
 };
 

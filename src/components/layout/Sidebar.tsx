@@ -29,7 +29,7 @@ import { useProperty } from "@/lib/property";
 function navigationForRole(role: "owner" | "tenant") {
   return [
     { name: "Tableau de bord", href: "/", icon: Home },
-    { name: "Dossiers", href: "/tickets", icon: Ticket },
+    { name: "Tickets", href: "/tickets", icon: Ticket },
     { name: "Conversations", href: "/conversations", icon: MessageSquare },
     { name: "Bail", href: "/contrat", icon: FileText },
     { name: role === "owner" ? "Loyers" : "Loyer", href: "/loyer", icon: Wallet },

@@ -23,7 +23,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   useEffect(() => {
-    const label = pathname === "/" ? "Tableau de bord" : pathname.startsWith("/tickets/") ? "Détail du dossier" : pathname.startsWith("/tickets") ? "Dossiers" : pathname.startsWith("/bailleur") ? "Portefeuille" : pathname.startsWith("/contrat") ? "Bail" : pathname.startsWith("/loyer") ? "Loyer" : pathname.startsWith("/documents") ? "Documents" : pathname.startsWith("/conversations") ? "Conversations" : pathname.startsWith("/notifications") ? "Notifications" : pathname.startsWith("/logements") ? "Logements" : pathname.startsWith("/parametres") ? "Paramètres" : pathname.startsWith("/aide") ? "Aide" : pathname.startsWith("/assistant") ? "Assistant" : pathname.startsWith("/contacts") ? "Contacts" : "LIAISON";
+    const label = pathname === "/" ? "Tableau de bord" : pathname.startsWith("/tickets/") ? "Détail du ticket" : pathname.startsWith("/tickets") ? "Tickets" : pathname.startsWith("/bailleur") ? "Portefeuille" : pathname.startsWith("/contrat") ? "Bail" : pathname.startsWith("/loyer") ? "Loyer" : pathname.startsWith("/documents") ? "Documents" : pathname.startsWith("/conversations") ? "Conversations" : pathname.startsWith("/notifications") ? "Notifications" : pathname.startsWith("/logements") ? "Logements" : pathname.startsWith("/parametres") ? "Paramètres" : pathname.startsWith("/aide") ? "Aide" : pathname.startsWith("/assistant") ? "Assistant" : pathname.startsWith("/contacts") ? "Contacts" : "LIAISON";
     document.title = `${label} · LIAISON`;
   }, [pathname]);
 

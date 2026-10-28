@@ -50,9 +50,9 @@ export default function PropertiesPage() {
         <div>
           <RoleBadge role={isOwner ? "owner" : "tenant"} />
           <h1 className="mt-2 text-3xl font-bold text-petrol">Mes logements</h1>
-          <p className="mt-2 text-sm text-muted">Choisissez le logement actif. Les dossiers, baux et loyers seront limités à ce contexte.</p>
+          <p className="mt-2 text-sm text-muted">Choisissez le logement actif. Les tickets, baux et loyers seront limités à ce contexte.</p>
         </div>
-        <Link href={isOwner ? "/tickets" : "/invitation"} className="btn-soft h-10 text-xs">{isOwner ? "Voir les dossiers" : "Rejoindre un autre logement"}</Link>
+        <Link href={isOwner ? "/tickets" : "/invitation"} className="btn-soft h-10 text-xs">{isOwner ? "Voir les tickets" : "Rejoindre un autre logement"}</Link>
       </div>
 
       {error && <p role="alert" className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}

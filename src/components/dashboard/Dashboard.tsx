@@ -68,7 +68,7 @@ export default function Dashboard() {
           {user && (
             <button type="button" onClick={() => openNewTicket()} disabled={!property || (!isTenant && !property.tenant_id)} className="btn-dark h-10 disabled:cursor-not-allowed disabled:opacity-50">
               <Plus className="h-4 w-4" strokeWidth={2.2} />
-              <span>{isTenant ? "Signaler un problème" : "Créer un dossier"}</span>
+              <span>{isTenant ? "Signaler un problème" : "Créer un ticket"}</span>
             </button>
           )}
         </div>
@@ -141,7 +141,7 @@ export default function Dashboard() {
               <div>
                 <p className="eyebrow">Suivi des demandes</p>
                 <h2 className="mt-1 font-headline text-[18px] font-bold leading-tight tracking-[-0.025em] text-ink">
-                  Dossiers actifs
+                  Tickets actifs
                 </h2>
               </div>
               <div className="flex shrink-0 flex-wrap justify-end gap-1">
@@ -169,7 +169,7 @@ export default function Dashboard() {
               href="/tickets"
               className="mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-xl bg-cream-soft text-[11px] font-bold text-ink transition hover:bg-cream-dark"
             >
-              Voir les dossiers du logement ({tickets.length})
+              Voir les tickets du logement ({tickets.length})
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </section>
@@ -190,7 +190,7 @@ export default function Dashboard() {
         <div className="flex items-center gap-2">
           <ShieldCheck className="h-4 w-4 text-sage" />
           <p className="text-[10px] font-medium text-muted">
-            Dossiers LIAISON · {tickets.length} tickets · échanges enregistrés
+            Tickets LIAISON · {tickets.length} tickets · échanges enregistrés
           </p>
         </div>
         <div className="flex items-center gap-3 text-[9.5px] font-semibold text-muted">

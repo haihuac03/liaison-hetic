@@ -30,15 +30,15 @@ const FAQS = [
     category: "Prise en main",
     question: "Comment créer un ticket ou signaler un problème ?",
     answer:
-      "Cliquez sur le bouton de création dans la barre supérieure. Le dossier est rattaché au logement actif, puis partagé avec l’autre partie.",
+      "Cliquez sur le bouton de création dans la barre supérieure. Le ticket est rattaché au logement actif, puis partagé avec l’autre partie.",
     link: { label: "Créer un ticket", href: "/tickets" },
   },
   {
-    id: "suivre-dossier",
+    id: "suivre-ticket",
     category: "Prise en main",
-    question: "Comment suivre l'avancement de mon dossier ?",
+    question: "Comment suivre l'avancement de mon ticket ?",
     answer:
-      "La frise du dossier affiche uniquement les événements enregistrés : création, messages, intervention, accord, clôture et réouverture. Les pièces restent consultables après fermeture.",
+      "La frise du ticket affiche uniquement les événements enregistrés : création, messages, intervention, accord, clôture et réouverture. Les pièces restent consultables après fermeture.",
     link: { label: "Voir mes tickets", href: "/tickets" },
   },
   {
@@ -62,16 +62,16 @@ const FAQS = [
     category: "Négociation",
     question: "Mon bailleur peut-il augmenter le loyer cette année ?",
     answer:
-      "Une révision annuelle dépend de la clause du bail et des règles applicables. Utilisez un dossier et ses messages pour échanger les éléments ; aucune négociation dédiée n’est simulée ici.",
-    link: { label: "Ouvrir les dossiers", href: "/tickets" },
+      "Une révision annuelle dépend de la clause du bail et des règles applicables. Utilisez un ticket et ses messages pour échanger les éléments ; aucune négociation dédiée n’est simulée ici.",
+    link: { label: "Ouvrir les tickets", href: "/tickets" },
   },
   {
     id: "accord",
     category: "Négociation",
     question: "Que se passe-t-il après un accord sur le loyer ?",
     answer:
-      "Lorsque les deux parties acceptent un montant, le dossier passe en « accord trouvé ». Vous pouvez alors demander la clôture avec des conditions écrites. L’autre partie doit accepter la même version avant la fermeture du dossier.",
-    link: { label: "Ouvrir le dossier", href: "/tickets" },
+      "Lorsque les deux parties acceptent un montant, le ticket passe en « accord trouvé ». Vous pouvez alors demander la clôture avec des conditions écrites. L’autre partie doit accepter la même version avant la fermeture du ticket.",
+    link: { label: "Ouvrir le ticket", href: "/tickets" },
   },
   {
     id: "documents",
@@ -86,7 +86,7 @@ const FAQS = [
     category: "Documents",
     question: "Quels documents sont conservés dans LIAISON ?",
     answer:
-      "LIAISON conserve les fichiers et les actions avec leur date. Ces éléments facilitent le suivi du dossier. Aucun certificat de signature qualifiée n’est délivré par l’application.",
+      "LIAISON conserve les fichiers et les actions avec leur date. Ces éléments facilitent le suivi du ticket. Aucun certificat de signature qualifiée n’est délivré par l’application.",
     link: { label: "Voir mes documents enregistrés", href: "/documents" },
   },
   {
@@ -102,7 +102,7 @@ const FAQS = [
     category: "Assistant IA",
     question: "L'assistant LIAISON peut-il me donner un conseil juridique ?",
     answer:
-      "Non. L'assistant délivre une information générale à partir de votre dossier et de textes publics. Il vous aide à préparer vos échanges et à comprendre vos droits, mais ne remplace ni un avocat, ni un notaire, ni un conciliateur. Pour une situation complexe, consultez un professionnel du droit.",
+      "Non. L'assistant délivre une information générale à partir de votre ticket et de textes publics. Il vous aide à préparer vos échanges et à comprendre vos droits, mais ne remplace ni un avocat, ni un notaire, ni un conciliateur. Pour une situation complexe, consultez un professionnel du droit.",
     link: { label: "Poser une question", href: "/assistant" },
   },
   {
@@ -110,7 +110,7 @@ const FAQS = [
     category: "Sécurité",
     question: "Qui peut voir mes messages et mes documents ?",
     answer:
-      "Les comptes, dossiers et fichiers partagés sont stockés sur le serveur local. Les contrôles d’accès limitent la visibilité aux parties concernées.",
+      "Les comptes, tickets et fichiers partagés sont stockés sur le serveur local. Les contrôles d’accès limitent la visibilité aux parties concernées.",
     link: { label: "Gérer mes paramètres", href: "/parametres" },
   },
   {
@@ -418,7 +418,7 @@ export default function AidePage() {
                 </div>
               </div>
               <p className="mt-2 text-[9px] leading-relaxed text-muted">
-                Pour une situation précise, échangez dans le dossier partagé avec l’autre partie et conservez les pièces utiles.
+                Pour une situation précise, échangez dans le ticket partagé avec l’autre partie et conservez les pièces utiles.
               </p>
               <div className="mt-2.5 flex flex-col gap-1.5">
                 <Link
@@ -434,7 +434,7 @@ export default function AidePage() {
                   className="flex h-8 items-center gap-2 rounded-lg bg-cream-soft px-2.5 text-[8.5px] font-semibold text-ink transition hover:bg-cream-dark"
                 >
                   <Phone className="h-3 w-3 text-sage" />
-                  Créer un dossier
+                  Créer un ticket
                   <ArrowUpRight className="ml-auto h-3 w-3 text-muted" />
                 </Link>
                 <button
@@ -449,7 +449,7 @@ export default function AidePage() {
               </div>
               <p className="mt-2 flex items-center gap-1 text-[7.5px] text-muted">
                 <ShieldCheck className="h-2.5 w-2.5 text-sage" />
-                Échanges conservés dans le dossier
+                Échanges conservés dans le ticket
               </p>
             </section>
 
@@ -501,7 +501,7 @@ export default function AidePage() {
                 onClick={() =>
                   showToast(
                     "Médiation & conciliation",
-                    "LIAISON peut vous aider à préparer un dossier de saisine. Consultez un professionnel du droit pour votre situation.",
+                    "LIAISON peut vous aider à préparer un ticket de saisine. Consultez un professionnel du droit pour votre situation.",
                     "info",
                   )
                 }

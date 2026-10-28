@@ -96,7 +96,7 @@ export default function ActivityFeed() {
       <div className="mt-4 flex items-center gap-2 rounded-xl border border-line/70 bg-cream-soft px-3 py-2.5">
         <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-sage" />
         <p className="text-[9.5px] leading-relaxed text-muted">
-          Les échanges sont enregistrés dans vos dossiers.{" "}
+          Les échanges sont enregistrés dans vos tickets.{" "}
           <Link href="/aide" className="font-semibold text-sage hover:underline">
             En savoir plus
           </Link>

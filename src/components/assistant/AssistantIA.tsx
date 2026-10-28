@@ -47,16 +47,16 @@ export default function AssistantIA({
 
   if (ticket.propertyId) return (
     <section className="card p-4">
-      <h2 className="font-headline text-[13px] font-bold text-ink">Repères pour le dossier</h2>
+      <h2 className="font-headline text-[13px] font-bold text-ink">Repères pour le ticket</h2>
       <p className="mt-2 text-[10px] leading-relaxed text-muted">Décrivez les faits et ajoutez les documents utiles. Le propriétaire peut proposer une intervention. La clôture demande l’accord des deux participants.</p>
-      <button type="button" onClick={() => onInsertMessage?.(`Bonjour ${ticket.assignee}, je reviens vers vous au sujet du dossier « ${ticket.title} ». `)} className="btn-soft mt-3 h-8 text-[9px]">Préparer un message</button>
+      <button type="button" onClick={() => onInsertMessage?.(`Bonjour ${ticket.assignee}, je reviens vers vous au sujet du ticket « ${ticket.title} ». `)} className="btn-soft mt-3 h-8 text-[9px]">Préparer un message</button>
     </section>
   );
 
 
   const buildDraft = () => {
     if (ticket.negotiation) {
-      return `Bonjour Claire, merci pour votre proposition de révision à ${ticket.negotiation.ownerProposal} €. Je vous confirme que je reste disponible pour trouver un accord équilibré, en tenant compte de l'état du double vitrage. Je vous propose de formaliser notre accord par écrit dans le dossier LIAISON.`;
+      return `Bonjour Claire, merci pour votre proposition de révision à ${ticket.negotiation.ownerProposal} €. Je vous confirme que je reste disponible pour trouver un accord équilibré, en tenant compte de l'état du double vitrage. Je vous propose de formaliser notre accord par écrit dans le ticket LIAISON.`;
     }
     return "Bonjour Claire, je vous confirme ma présence jeudi 29 octobre entre 14h et 16h pour l'intervention de Plomberie Martin. Le meuble sous l'évier sera dégagé. Merci pour la prise en charge du devis.";
   };
@@ -75,7 +75,7 @@ export default function AssistantIA({
     if (/attestation/i.test(label)) {
       downloadText(
         `Attestation_LIAISON_${ticket.id}.txt`,
-        `ATTESTATION LIAISON\n\nDossier #${ticket.id} — ${ticket.title}\nDate : ${new Date().toLocaleDateString("fr-FR")}\nParties : Thomas Martin (locataire) et Claire Bernard (bailleur)\n\nLes échanges, photographies et documents du dossier sont horodatés et archivés conformément au protocole de conciliation LIAISON. L'intervention et les pièces associées peuvent être communiquées à l'assureur habitation.\n\nInformation générale — ne remplace pas un professionnel du droit.`,
+        `ATTESTATION LIAISON\n\nDossier #${ticket.id} — ${ticket.title}\nDate : ${new Date().toLocaleDateString("fr-FR")}\nParties : Thomas Martin (locataire) et Claire Bernard (bailleur)\n\nLes échanges, photographies et documents du ticket sont horodatés et archivés conformément au protocole de conciliation LIAISON. L'intervention et les pièces associées peuvent être communiquées à l'assureur habitation.\n\nInformation générale — ne remplace pas un professionnel du droit.`,
       );
       showToast("Attestation générée", "Le document a été téléchargé.", "info");
       return;

@@ -41,7 +41,7 @@ interface ResultItem {
 
 const pagesForRole = (role: "owner" | "tenant"): ResultItem[] => [
   { id: "page-home", section: "Pages", label: "Accueil", sub: "Tableau de bord du logement", href: "/", icon: Home, tone: "bg-cream-soft text-petrol" },
-  { id: "page-tickets", section: "Pages", label: "Dossiers", sub: "Dossiers du logement actif", href: "/tickets", icon: Ticket, tone: "bg-sky-soft text-sky-dark" },
+  { id: "page-tickets", section: "Pages", label: "Tickets", sub: "Tickets du logement actif", href: "/tickets", icon: Ticket, tone: "bg-sky-soft text-sky-dark" },
   { id: "page-conversations", section: "Pages", label: "Conversations", sub: "Échanges du logement actif", href: "/conversations", icon: MessageSquare, tone: "bg-sage-soft text-sage" },
   { id: "page-documents", section: "Pages", label: "Documents", sub: "Bail, quittances, devis", href: "/documents", icon: FileText, tone: "bg-peach-soft text-peach-dark" },
   { id: "page-loyer", section: "Pages", label: role === "owner" ? "Loyers" : "Loyer", sub: "Échéances et quittances", href: "/loyer", icon: Wallet, tone: "bg-sage-soft text-sage" },
@@ -151,7 +151,7 @@ export default function SearchModal() {
 
   const quickActions = [
     {
-      label: user?.role === "owner" ? "Créer un dossier" : "Signaler un problème",
+      label: user?.role === "owner" ? "Créer un ticket" : "Signaler un problème",
       sub: "Pour le logement actif",
       icon: Plus,
       action: () => {
@@ -251,7 +251,7 @@ export default function SearchModal() {
 
               <div className="mt-2 border-t border-line/70 px-1.5 pt-2">
                 <p className="text-[8.5px] font-bold uppercase tracking-[0.12em] text-muted">
-                  Dossiers récents
+                  Tickets récents
                 </p>
                 <div className="mt-1.5 flex flex-col gap-0.5">
                   {tickets.slice(0, 3).map((ticket) => (

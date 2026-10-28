@@ -19,13 +19,13 @@ import { useProperty } from "@/lib/property";
 import type { NotificationItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-type NotificationFilter = "toutes" | "unread" | "messages" | "dossiers";
+type NotificationFilter = "toutes" | "unread" | "messages" | "tickets";
 
 const FILTERS: { id: NotificationFilter; label: string }[] = [
   { id: "toutes", label: "Toutes" },
   { id: "unread", label: "Non lues" },
   { id: "messages", label: "Messages" },
-  { id: "dossiers", label: "Dossiers" },
+  { id: "tickets", label: "Tickets" },
 ];
 
 const ICONS = {
@@ -46,7 +46,7 @@ function matchFilter(notification: NotificationItem, filter: NotificationFilter)
   if (filter === "toutes") return true;
   if (filter === "unread") return !notification.read;
   if (filter === "messages") return notification.type === "message";
-  if (filter === "dossiers") return notification.type === "ticket";
+  if (filter === "tickets") return notification.type === "ticket";
   return notification.type === "ticket";
 }
 
@@ -91,7 +91,7 @@ export default function NotificationsPage() {
       tone: "bg-sage-soft text-sage",
     },
     {
-      label: "Dossiers concernés",
+      label: "Tickets concernés",
       value: String(linkedTickets).padStart(2, "0"),
       helper: "Tickets liés",
       icon: Ticket,

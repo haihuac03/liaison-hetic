@@ -48,7 +48,7 @@ export function ticketAttention(
   role: "owner" | "tenant" | undefined,
 ): TicketAttention {
   if (["ferme", "resolu"].includes(ticket.status)) {
-    return { owner: "neutral", label: "Dossier clôturé", detail: "Aucune action en attente" };
+    return { owner: "neutral", label: "Ticket clôturé", detail: "Aucune action en attente" };
   }
 
   const closure = latestRow(ticket, "closures");
@@ -86,14 +86,14 @@ export function ticketAttention(
 
   const dispute = latestRow(ticket, "disputes");
   if (dispute && ["open", "active", "en_litige"].includes(rowStatus(dispute))) {
-    return { owner: "neutral", label: "Litige ouvert", detail: "Le dossier est en attente de médiation" };
+    return { owner: "neutral", label: "Litige ouvert", detail: "Le ticket est en attente de médiation" };
   }
 
   if (ticket.status === "en_attente") {
     return { owner: "neutral", label: "Réponse attendue", detail: "Le prochain geste dépend des échanges" };
   }
 
-  return { owner: "neutral", label: "Dossier à suivre", detail: "Aucune action urgente identifiée" };
+  return { owner: "neutral", label: "Ticket à suivre", detail: "Aucune action urgente identifiée" };
 }
 
 export function PropertyProvider({ children }: { children: ReactNode }) {

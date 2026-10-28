@@ -404,7 +404,7 @@ export default function ContactsPage() {
             </span>
             <div>
               <h2 className="font-headline text-[13px] font-bold text-ink">
-                Un interlocuteur manque à votre dossier ?
+                Un interlocuteur manque à votre ticket ?
               </h2>
               <p className="mt-0.5 max-w-lg text-[9.5px] leading-relaxed text-muted">
                 L&apos;équipe LIAISON peut vérifier une coordonnée, ajouter un artisan ou vous aider à
@@ -523,7 +523,7 @@ export default function ContactsPage() {
             <ShieldCheck className="mt-0.5 h-3 w-3 shrink-0 text-sage" />
             <p className="text-[8px] leading-relaxed text-muted">
               Ce contact reste privé et n&apos;est pas partagé avec le bailleur. Vous pouvez le
-              contacter depuis votre carnet ou l&apos;associer à un dossier.
+              contacter depuis votre carnet ou l&apos;associer à un ticket.
             </p>
           </div>
 

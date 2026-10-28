@@ -29,7 +29,7 @@ export default function TicketDocuments({ ticket, onPreview }: { ticket: Ticket;
       }
       await uploadAttachments(ticket.id, attachments);
       await refresh();
-      showToast("Pièces ajoutées", "Les fichiers sont enregistrés dans le dossier.");
+      showToast("Pièces ajoutées", "Les fichiers sont enregistrés dans le ticket.");
     } catch (cause) {
       showToast("Ajout impossible", cause instanceof Error ? cause.message : "Réessayez.", "warning");
     } finally {

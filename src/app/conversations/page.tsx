@@ -137,7 +137,7 @@ export default function ConversationsPage() {
     {
       label: "Conversations actives",
       value: String(activeThreads).padStart(2, "0"),
-      helper: "Dossiers en cours",
+      helper: "Tickets en cours",
       icon: MessageSquare,
       tone: "bg-sage-soft text-sage",
     },
@@ -186,7 +186,7 @@ export default function ConversationsPage() {
               Conversations
             </h1>
             <p className="mt-1.5 max-w-xl text-[12.5px] leading-relaxed text-muted">
-              Retrouvez les échanges de ce logement, réunis par dossier et conservés dans cet espace.
+              Retrouvez les échanges de ce logement, réunis par ticket et conservés dans cet espace.
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap items-center gap-2">
@@ -268,7 +268,7 @@ export default function ConversationsPage() {
                   </span>
                   <p className="mt-2 text-[11px] font-bold text-ink">Aucune conversation</p>
                   <p className="mt-0.5 text-[9px] leading-relaxed text-muted">
-                    Modifiez votre recherche ou ouvrez un nouveau dossier.
+                    Modifiez votre recherche ou ouvrez un nouveau ticket.
                   </p>
                 </div>
               ) : (
@@ -337,7 +337,7 @@ export default function ConversationsPage() {
                   openNewTicket("autre");
                   showToast(
                     "Nouvelle conversation",
-                    "Choisissez le motif : le dossier sera rattaché à vos échanges.",
+                    "Choisissez le motif : le ticket sera rattaché à vos échanges.",
                     "info",
                   );
                 }}
@@ -359,7 +359,7 @@ export default function ConversationsPage() {
                     </span>
                     <div className="min-w-0">
                       <p className="truncate text-[10px] font-bold text-ink">
-                        Dossier #{selected.id.slice(0, 8)} · {selected.shortTitle}
+                        Ticket #{selected.id.slice(0, 8)} · {selected.shortTitle}
                       </p>
                       <p className="truncate text-[8.5px] text-muted">
                         {selected.messages.length} messages · {selected.documents.length} pièces
@@ -372,7 +372,7 @@ export default function ConversationsPage() {
                     onClick={() => selected.propertyId && setActiveProperty(selected.propertyId)}
                     className="flex h-7 shrink-0 items-center gap-1 rounded-lg bg-cream-soft px-2.5 text-[8.5px] font-bold text-ink transition hover:bg-petrol hover:text-white"
                   >
-                    Ouvrir le dossier
+                    Ouvrir le ticket
                     <ArrowUpRight className="h-3 w-3" />
                   </Link>
                 </div>
@@ -388,7 +388,7 @@ export default function ConversationsPage() {
                   Sélectionnez une conversation
                 </p>
                 <p className="mt-1 max-w-xs text-[10px] leading-relaxed text-muted">
-                  Vos échanges apparaîtront ici, rattachés au dossier concerné.
+                  Vos échanges apparaîtront ici, rattachés au ticket concerné.
                 </p>
               </div>
             )}
@@ -441,7 +441,7 @@ export default function ConversationsPage() {
                     <span className="flex h-7 w-7 items-center justify-center rounded-[8px] bg-cream-soft text-petrol">
                       <Wrench className="h-3.5 w-3.5" />
                     </span>
-                    <h2 className="text-[10.5px] font-bold text-ink">Dossier lié</h2>
+                    <h2 className="text-[10.5px] font-bold text-ink">Ticket lié</h2>
                   </div>
                   <TicketStatus status={selected.status} />
                 </div>
@@ -459,7 +459,7 @@ export default function ConversationsPage() {
                   onClick={() => selected.propertyId && setActiveProperty(selected.propertyId)}
                   className="mt-2 flex h-8 w-full items-center justify-center gap-1.5 rounded-lg bg-petrol text-[8.5px] font-bold text-white transition hover:bg-petrol-dark"
                 >
-                  Suivre le dossier
+                  Suivre le ticket
                   <ArrowUpRight className="h-3 w-3" />
                 </Link>
               </section>

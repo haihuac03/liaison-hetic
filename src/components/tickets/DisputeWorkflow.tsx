@@ -33,14 +33,14 @@ export default function DisputeWorkflow({ ticket }: { ticket: Ticket }) {
 
   const legalMailto = (resource: LegalResource) => {
     if (!resource.email) return resource.contactUrl;
-    const subject = `Litige locatif — dossier LIAISON #${ticket.id.slice(0, 8)}`;
+    const subject = `Litige locatif — ticket LIAISON #${ticket.id.slice(0, 8)}`;
     const body = [
       "Bonjour,",
       "Je souhaite obtenir une information juridique sur le litige locatif décrit ci-dessous.",
-      `Dossier : #${ticket.id.slice(0, 8)}\nLogement : ${activeProperty?.address || ticket.address || "Non renseigné"}\nObjet : ${ticket.title}`,
-      `Description du dossier :\n${ticket.description}`,
+      `Ticket : #${ticket.id.slice(0, 8)}\nLogement : ${activeProperty?.address || ticket.address || "Non renseigné"}\nObjet : ${ticket.title}`,
+      `Description du ticket :\n${ticket.description}`,
       `Point de désaccord :\n${rowText(activeDispute || {}, "description")}`,
-      "Je peux vous transmettre les échanges et les pièces utiles à l’étude du dossier.",
+      "Je peux vous transmettre les échanges et les pièces utiles à l’étude du ticket.",
       "Merci d’avance pour votre aide.",
     ].join("\n\n");
     return `mailto:${resource.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -58,7 +58,7 @@ export default function DisputeWorkflow({ ticket }: { ticket: Ticket }) {
       await refresh();
       setOpen(false);
       setDescription("");
-      showToast("Litige signalé", "Le désaccord est ajouté à l’historique du dossier.");
+      showToast("Litige signalé", "Le désaccord est ajouté à l’historique du ticket.");
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Le signalement a échoué.");
     } finally {
@@ -71,7 +71,7 @@ export default function DisputeWorkflow({ ticket }: { ticket: Ticket }) {
     try {
       await coreRequest("dispute/withdraw", { disputeId: rowText(row, "id") });
       await refresh();
-      showToast("Litige retiré", "Le dossier peut poursuivre son traitement.");
+      showToast("Litige retiré", "Le ticket peut poursuivre son traitement.");
     } catch (cause) {
       showToast("Retrait impossible", cause instanceof Error ? cause.message : "Réessayez.", "warning");
     } finally {
@@ -84,7 +84,7 @@ export default function DisputeWorkflow({ ticket }: { ticket: Ticket }) {
   return (
     <section className="overflow-hidden rounded-card border border-peach/50 bg-white shadow-soft">
       <div className="flex flex-wrap items-center justify-between gap-2 bg-peach-soft/80 px-4 py-3">
-        <div className="flex items-center gap-2.5"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-peach text-peach-dark"><AlertTriangle className="h-4 w-4" /></span><div><h2 className="font-headline text-[13px] font-bold text-ink">{activeDispute ? "Désaccord signalé" : "Désaccord & litige"}</h2><p className="mt-0.5 text-[8.5px] text-muted">Les échanges du dossier restent accessibles.</p></div></div>
+        <div className="flex items-center gap-2.5"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-peach text-peach-dark"><AlertTriangle className="h-4 w-4" /></span><div><h2 className="font-headline text-[13px] font-bold text-ink">{activeDispute ? "Désaccord signalé" : "Désaccord & litige"}</h2><p className="mt-0.5 text-[8.5px] text-muted">Les échanges du ticket restent accessibles.</p></div></div>
         {!readOnly && !activeDispute && <button type="button" onClick={() => { setOpen(true); setError(""); }} className="btn-soft h-8 px-3 text-[8.5px]"><ArrowUpRight className="h-3 w-3" /> Signaler un litige</button>}
       </div>
       <div className="space-y-2 p-3.5">
@@ -100,7 +100,7 @@ export default function DisputeWorkflow({ ticket }: { ticket: Ticket }) {
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-petrol shadow-sm"><Scale className="h-4 w-4" /></span>
             <div>
               <h3 className="font-headline text-[12px] font-bold text-ink">Besoin d’un conseil juridique ?</h3>
-              <p className="mt-0.5 text-[8.5px] leading-relaxed text-muted">Ces services officiels peuvent vous informer sur vos droits. Ils ne font pas partie du dossier LIAISON et n’y ont pas accès automatiquement.</p>
+              <p className="mt-0.5 text-[8.5px] leading-relaxed text-muted">Ces services officiels peuvent vous informer sur vos droits. Ils ne font pas partie du ticket LIAISON et n’y ont pas accès automatiquement.</p>
             </div>
           </div>
           <div className={`mt-3 grid gap-2 ${legalResources.length > 1 ? "sm:grid-cols-2" : ""}`}>
@@ -121,7 +121,7 @@ export default function DisputeWorkflow({ ticket }: { ticket: Ticket }) {
                     )}
                   </div>
                   <a href={mailLink} target={resource.email ? undefined : "_blank"} rel={resource.email ? undefined : "noreferrer"} className="mt-3 flex items-center gap-1.5 text-[8.5px] font-bold text-petrol hover:underline">
-                    {resource.email ? "Écrire avec le résumé du dossier" : "Ouvrir le formulaire officiel"}<ExternalLink className="h-3 w-3" />
+                    {resource.email ? "Écrire avec le résumé du ticket" : "Ouvrir le formulaire officiel"}<ExternalLink className="h-3 w-3" />
                   </a>
                 </article>
               );
