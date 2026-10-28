@@ -20,6 +20,15 @@ Application locale de gestion locative pour propriétaires et locataires : plusi
 - Lucide React
 - Composants réutilisables
 
+## Déploiement
+
+- Production : https://liaison-hetic.vercel.app
+- Dépôt GitHub : https://github.com/haihuac03/liaison-hetic
+- Données relationnelles : Turso
+- Pièces jointes : Vercel Blob privé
+
+La procédure de configuration est détaillée dans [docs/VERCEL.md](docs/VERCEL.md).
+
 ## Démarrage
 
 ```bash
