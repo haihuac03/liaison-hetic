@@ -14,11 +14,12 @@ function storageKey(key: string): string {
 
 function blobConfiguration() {
   const token = process.env.BLOB_READ_WRITE_TOKEN?.trim() || undefined;
+  const storeId = process.env.BLOB_STORE_ID?.trim() || undefined;
   const hostedOnVercel = process.env.VERCEL === "1" || Boolean(process.env.VERCEL_ENV);
-  if (hostedOnVercel && !token) {
-    throw new Error("BLOB_READ_WRITE_TOKEN est requis sur Vercel.");
+  if (hostedOnVercel && !token && !storeId) {
+    throw new Error("BLOB_STORE_ID ou BLOB_READ_WRITE_TOKEN est requis sur Vercel.");
   }
-  return { token, hostedOnVercel };
+  return { token, storeId, hostedOnVercel, useBlob: Boolean(token || storeId) };
 }
 
 function localPath(key: string): string {
@@ -27,12 +28,12 @@ function localPath(key: string): string {
 
 export async function storeFile(key: string, bytes: Buffer, contentType: string): Promise<void> {
   const pathname = `${blobPrefix}/${storageKey(key)}`;
-  const { token, hostedOnVercel } = blobConfiguration();
-  if (token) {
+  const { token, storeId, hostedOnVercel, useBlob } = blobConfiguration();
+  if (useBlob) {
     await put(pathname, bytes, {
       access: "private",
       contentType,
-      token,
+      ...(token ? { token } : { storeId }),
       addRandomSuffix: false,
       allowOverwrite: false,
     });
@@ -46,9 +47,9 @@ export async function storeFile(key: string, bytes: Buffer, contentType: string)
 
 export async function readStoredFile(key: string): Promise<Buffer> {
   const pathname = `${blobPrefix}/${storageKey(key)}`;
-  const { token, hostedOnVercel } = blobConfiguration();
-  if (token) {
-    const result = await get(pathname, { access: "private", token, useCache: false });
+  const { token, storeId, hostedOnVercel, useBlob } = blobConfiguration();
+  if (useBlob) {
+    const result = await get(pathname, { access: "private", ...(token ? { token } : { storeId }), useCache: false });
     if (!result || result.statusCode !== 200) throw new Error("Fichier introuvable.");
     return Buffer.from(await new Response(result.stream).arrayBuffer());
   }
@@ -58,9 +59,9 @@ export async function readStoredFile(key: string): Promise<Buffer> {
 
 export async function removeStoredFile(key: string): Promise<void> {
   const pathname = `${blobPrefix}/${storageKey(key)}`;
-  const { token, hostedOnVercel } = blobConfiguration();
-  if (token) {
-    await del(pathname, { token }).catch(() => undefined);
+  const { token, storeId, hostedOnVercel, useBlob } = blobConfiguration();
+  if (useBlob) {
+    await del(pathname, token ? { token } : { storeId }).catch(() => undefined);
     return;
   }
   if (hostedOnVercel) throw new Error("BLOB_READ_WRITE_TOKEN est requis sur Vercel.");

@@ -5,14 +5,15 @@ L'application utilise Turso pour les données relationnelles et un store Vercel 
 ## Ressources
 
 1. Créer une base Turso et récupérer son URL `libsql://` ainsi qu'un jeton d'accès.
-2. Créer un store Vercel Blob avec un accès privé et récupérer son `BLOB_READ_WRITE_TOKEN`.
-3. Définir les variables dans les environnements Vercel concernés. Les jetons Turso et Blob sont des secrets à conserver dans Vercel et ne doivent jamais être préfixés par `NEXT_PUBLIC_` ni ajoutés au dépôt.
+2. Créer un store Vercel Blob avec un accès privé et utiliser la connexion de stockage Vercel, qui fournit `BLOB_STORE_ID` et l’authentification OIDC.
+3. Définir les variables dans les environnements Vercel concernés. Le jeton Turso est un secret à conserver dans Vercel et ne doivent jamais être préfixés par `NEXT_PUBLIC_` ni ajoutés au dépôt.
 
 | Variable | Production | Usage |
 | --- | --- | --- |
 | `TURSO_DATABASE_URL` | Obligatoire | URL distante de la base, en `libsql://` |
 | `TURSO_AUTH_TOKEN` | Obligatoire | Secret d'écriture vers Turso |
-| `BLOB_READ_WRITE_TOKEN` | Obligatoire | Secret du store Blob privé |
+| `BLOB_STORE_ID` | Fourni par `vercel storage connect` | Store Blob privé via OIDC |
+| `BLOB_READ_WRITE_TOKEN` | Alternative | Jeton Blob hors Vercel |
 | `APP_ORIGIN` | Obligatoire | Origine HTTPS canonique, sans slash final |
 | `COOKIE_SECURE` | `true` | Cookies de session uniquement en HTTPS |
 
