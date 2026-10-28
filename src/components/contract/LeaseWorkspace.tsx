@@ -163,7 +163,7 @@ export default function LeaseWorkspace() {
   };
 
   const loading = auth.loading || coreSession.loading;
-  const pageTitle = isOwner ? "Baux & documents" : "Mon bail";
+  const pageTitle = isOwner ? "Bail & documents" : "Mon bail";
 
   if (loading) {
     return (

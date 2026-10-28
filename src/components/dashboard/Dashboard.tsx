@@ -63,7 +63,7 @@ export default function Dashboard() {
         <div className="flex shrink-0 flex-wrap items-center gap-2">
           <Link href={isTenant ? "/loyer" : "/contrat"} className="btn-soft h-10 bg-transparent shadow-none">
             <MessageSquare className="h-4 w-4" />
-            <span>{isTenant ? "Voir mon loyer" : "Baux & documents"}</span>
+            <span>{isTenant ? "Voir mon loyer" : "Bail & documents"}</span>
           </Link>
           {user && (
             <button type="button" onClick={() => openNewTicket()} disabled={!property || (!isTenant && !property.tenant_id)} className="btn-dark h-10 disabled:cursor-not-allowed disabled:opacity-50">

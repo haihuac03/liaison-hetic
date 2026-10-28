@@ -45,7 +45,7 @@ const pagesForRole = (role: "owner" | "tenant"): ResultItem[] => [
   { id: "page-conversations", section: "Pages", label: "Conversations", sub: "Échanges du logement actif", href: "/conversations", icon: MessageSquare, tone: "bg-sage-soft text-sage" },
   { id: "page-documents", section: "Pages", label: "Documents", sub: "Bail, quittances, devis", href: "/documents", icon: FileText, tone: "bg-peach-soft text-peach-dark" },
   { id: "page-loyer", section: "Pages", label: role === "owner" ? "Loyers" : "Loyer", sub: "Échéances et quittances", href: "/loyer", icon: Wallet, tone: "bg-sage-soft text-sage" },
-  { id: "page-contrat", section: "Pages", label: role === "owner" ? "Baux" : "Bail", sub: "Bail et clauses", href: "/contrat", icon: FileText, tone: "bg-cream-soft text-petrol" },
+  { id: "page-contrat", section: "Pages", label: "Bail", sub: "Bail et clauses", href: "/contrat", icon: FileText, tone: "bg-cream-soft text-petrol" },
   { id: "page-assistant", section: "Pages", label: "Assistant IA", sub: "Conseils en droit locatif", href: "/assistant", icon: Bot, tone: "bg-petrol text-white" },
   { id: "page-contacts", section: "Pages", label: "Interlocuteurs", sub: "Contacts et artisans", href: "/contacts", icon: Users, tone: "bg-sky-soft text-sky-dark" },
   { id: "page-parametres", section: "Pages", label: "Paramètres", sub: "Profil et préférences", href: "/parametres", icon: Settings, tone: "bg-cream-soft text-petrol" },

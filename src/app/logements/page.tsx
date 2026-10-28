@@ -87,7 +87,7 @@ export default function PropertiesPage() {
                   <button className="mt-4 text-xs font-semibold text-petrol underline" onClick={async () => { try { await coreRequest("renew", { propertyId: property.id }); await refresh(); } catch (cause) { setError(cause instanceof Error ? cause.message : "Renouvellement impossible."); } }}>Générer un nouveau code</button>
                 </div>
               )}
-              {active && <div className="mt-4 flex gap-2"><Link href="/contrat" className="btn-soft h-9 text-[10px]">{isOwner ? "Baux & documents" : "Mon bail"}</Link><Link href="/loyer" className="btn-soft h-9 text-[10px]">{isOwner ? "Loyers" : "Mon loyer"}</Link></div>}
+              {active && <div className="mt-4 flex gap-2"><Link href="/contrat" className="btn-soft h-9 text-[10px]">{isOwner ? "Bail & documents" : "Mon bail"}</Link><Link href="/loyer" className="btn-soft h-9 text-[10px]">{isOwner ? "Loyers" : "Mon loyer"}</Link></div>}
             </section>
           );
         })}

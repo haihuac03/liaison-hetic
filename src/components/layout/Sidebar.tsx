@@ -31,7 +31,7 @@ function navigationForRole(role: "owner" | "tenant") {
     { name: "Tableau de bord", href: "/", icon: Home },
     { name: "Dossiers", href: "/tickets", icon: Ticket },
     { name: "Conversations", href: "/conversations", icon: MessageSquare },
-    { name: role === "owner" ? "Baux" : "Bail", href: "/contrat", icon: FileText },
+    { name: "Bail", href: "/contrat", icon: FileText },
     { name: role === "owner" ? "Loyers" : "Loyer", href: "/loyer", icon: Wallet },
     { name: "Assistant IA", href: "/assistant", icon: Bot },
     { name: "Interlocuteurs", href: "/contacts", icon: Users },
