@@ -12,6 +12,7 @@ import {
   propertyUploadContext, saveLease,
 } from "@/lib/server/leases";
 import { readStoredFile, removeStoredFile, storeFile } from "@/lib/server/storage";
+import { documentMimeFor, DOCUMENT_MAX_BYTES } from "@/lib/document-files";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -124,30 +125,68 @@ async function dispatch(req: NextRequest, parts: string[]) {
   if (action === "rent" && req.method === "POST" && parts[1] === "pay") {
     return NextResponse.json(await payRentPeriod(user,body));
   }
+  if (action === "lease-upload" && req.method === "GET") {
+    return NextResponse.json({
+      direct: Boolean(process.env.BLOB_STORE_ID || process.env.BLOB_READ_WRITE_TOKEN) && Boolean(process.env.BLOB_WEBHOOK_PUBLIC_KEY),
+    });
+  }
   if (action === "lease-upload" && req.method === "POST") {
     const form = await req.formData();
     const items = form.getAll("files");
     if (items.length < 1 || items.length > 5) return fail("Joignez entre 1 et 5 fichiers.");
     const uploadContext = await propertyUploadContext(user,form.get("propertyId"),form.get("leaseId"));
-    const validFiles: File[] = [];
+    const validFiles: {item:File;mime:string}[] = [];
     for (const item of items) {
-      if (!(item instanceof File) || item.size === 0 || item.size > 10*1024*1024 || !["image/jpeg","image/png","image/webp","application/pdf"].includes(item.type)) return fail("Formats acceptés : JPG, PNG, WebP, PDF ; 10 Mo maximum par fichier.");
-      validFiles.push(item);
+      if (!(item instanceof File) || item.size === 0 || item.size > DOCUMENT_MAX_BYTES) return fail("Formats acceptés : JPG, PNG, WebP, PDF ; 10 Mo maximum par fichier.");
+      const mime = documentMimeFor(item.name,item.type);
+      if (!mime) return fail("Formats acceptés : JPG, PNG, WebP, PDF ; 10 Mo maximum par fichier.");
+      validFiles.push({item,mime});
     }
     const prepared: {id:string;diskName:string;name:string;mime:string;size:number;item:File}[] = [];
     try {
-      for (const item of validFiles) {
+      for (const {item,mime} of validFiles) {
         const bytes = Buffer.from(await item.arrayBuffer());
-        if (!validFileSignature(item.type,bytes)) throw new Error("INVALID_FILE");
+        if (!validFileSignature(mime,bytes)) throw new Error("INVALID_FILE");
         const fileId = id(), diskName = id();
-        await storeFile(diskName,bytes,item.type);
-        prepared.push({id:fileId,diskName,name:item.name.slice(0,200),mime:item.type,size:item.size,item});
+        await storeFile(diskName,bytes,mime);
+        prepared.push({id:fileId,diskName,name:item.name.slice(0,200),mime,size:item.size,item});
       }
       const documents = await insertPropertyDocuments(user,uploadContext,prepared.map(({item,...file}) => file));
       return NextResponse.json({files:documents.map(document => document.id),documents});
     } catch (error) {
       await Promise.all(prepared.map(({diskName}) => removeStoredFile(diskName)));
       if (error instanceof Error && error.message === "INVALID_FILE") return fail("Le contenu du fichier ne correspond pas à son format.");
+      throw error;
+    }
+  }
+  if (action === "lease-upload-complete" && req.method === "POST") {
+    const entries = (body as {files?:unknown}).files;
+    if (!Array.isArray(entries) || entries.length < 1 || entries.length > 5) return fail("Joignez entre 1 et 5 fichiers.");
+    const prepared: {id:string;diskName:string;name:string;mime:string;size:number}[] = [];
+    try {
+      const uploadContext = await propertyUploadContext(user,(body as {propertyId?:unknown}).propertyId,(body as {leaseId?:unknown}).leaseId);
+      for (const entry of entries) {
+        if (!entry || typeof entry !== "object" || Array.isArray(entry)) throw new WorkflowError(400, "Métadonnées du document invalides.");
+        const file = entry as Record<string,unknown>;
+        const name = typeof file.name === "string" ? file.name.trim().slice(0,200) : "";
+        const diskName = typeof file.diskName === "string" ? file.diskName : "";
+        const size = typeof file.size === "number" ? file.size : NaN;
+        const mime = documentMimeFor(name,typeof file.mime === "string" ? file.mime : null);
+        if (!name || !/^[a-f0-9]{32}$/i.test(diskName) || !Number.isSafeInteger(size) || size < 1 || size > DOCUMENT_MAX_BYTES || !mime) {
+          throw new WorkflowError(400, "Métadonnées du document invalides.");
+        }
+        const duplicate = await db.prepare("SELECT id FROM property_documents WHERE disk_name=?").get(diskName);
+        if (duplicate) throw new WorkflowError(409, "Ce document a déjà été enregistré.");
+        let bytes: Buffer;
+        try { bytes = await readStoredFile(diskName); }
+        catch { throw new WorkflowError(404, "Le document envoyé est introuvable."); }
+        if (bytes.length !== size || !validFileSignature(mime,bytes)) throw new WorkflowError(400, "Le contenu du fichier ne correspond pas à son format.");
+        prepared.push({id:id(),diskName,name,mime,size});
+      }
+      const documents = await insertPropertyDocuments(user,uploadContext,prepared);
+      return NextResponse.json({files:documents.map(document => document.id),documents});
+    } catch (error) {
+      await Promise.all(prepared.map(({diskName}) => removeStoredFile(diskName)));
       throw error;
     }
   }
@@ -172,23 +211,25 @@ async function dispatch(req: NextRequest, parts: string[]) {
     const ticket=await ticketForUser(user.id,parts[1] || "");
     if(ticket.status === "ferme" || ticket.status === "resolu") return fail("Ce ticket est en lecture seule. Utilisez reopen pour le reprendre.",409);
     const form=await req.formData(); const items=form.getAll("files"); if(items.length<1 || items.length>5) return fail("Joignez entre 1 et 5 fichiers.");
-    const validFiles: File[] = [];
+    const validFiles: {item:File;mime:string}[] = [];
     for (const item of items) {
-      if (!(item instanceof File) || item.size === 0 || item.size > 10*1024*1024 || !["image/jpeg","image/png","image/webp","application/pdf"].includes(item.type)) return fail("Formats acceptés : JPG, PNG, WebP, PDF ; 10 Mo maximum par fichier.");
-      validFiles.push(item);
+      if (!(item instanceof File) || item.size === 0 || item.size > DOCUMENT_MAX_BYTES) return fail("Formats acceptés : JPG, PNG, WebP, PDF ; 10 Mo maximum par fichier.");
+      const mime = documentMimeFor(item.name,item.type);
+      if (!mime) return fail("Formats acceptés : JPG, PNG, WebP, PDF ; 10 Mo maximum par fichier.");
+      validFiles.push({item,mime});
     }
     const messageId = await validateMessageAttachment(ticket,user,form.get("messageId"));
     const interventionId = await validateInterventionAttachment(ticket,form.get("interventionId"));
-    const prepared: {fileId:string;diskName:string;item:File}[] = [];
+    const prepared: {fileId:string;diskName:string;item:File;mime:string}[] = [];
     try {
-      for (const item of validFiles) {
+      for (const {item,mime} of validFiles) {
         const bytes = Buffer.from(await item.arrayBuffer());
-        if (!validFileSignature(item.type,bytes)) throw new Error("INVALID_FILE");
+        if (!validFileSignature(mime,bytes)) throw new Error("INVALID_FILE");
         const fileId=id(), diskName=id();
-        prepared.push({fileId,diskName,item});
-        await storeFile(diskName,bytes,item.type);
+        prepared.push({fileId,diskName,item,mime});
+        await storeFile(diskName,bytes,mime);
       }
-      await addFiles(user,ticket,messageId,interventionId,prepared.map(({fileId,diskName,item}) => ({id:fileId,diskName,name:item.name.slice(0,200),mime:item.type,size:item.size})));
+      await addFiles(user,ticket,messageId,interventionId,prepared.map(({fileId,diskName,item,mime}) => ({id:fileId,diskName,name:item.name.slice(0,200),mime,size:item.size})));
     } catch (error) {
       await Promise.all(prepared.map(({diskName}) => removeStoredFile(diskName)));
       if (error instanceof Error && error.message === "INVALID_FILE") return fail("Le contenu du fichier ne correspond pas à son format.");

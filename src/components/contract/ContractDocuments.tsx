@@ -2,6 +2,12 @@
 
 import { useRef, useState } from "react";
 import { Download, FileText, Upload } from "lucide-react";
+import { coreRequest } from "@/lib/client/core";
+import {
+  DOCUMENT_ACCEPT,
+  DOCUMENT_MAX_BYTES,
+  documentMimeFor,
+} from "@/lib/document-files";
 import {
   documentCreatedAt,
   documentName,
@@ -9,37 +15,17 @@ import {
   type PropertyDocumentRecord,
 } from "./lease-types";
 
-const MAX_FILE_BYTES = 10 * 1024 * 1024;
-const ACCEPTED_EXTENSIONS = ["pdf", "jpg", "jpeg", "png", "webp"];
-const ACCEPTED_MIME_TYPES = [
-  "application/pdf",
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-];
-
 function validateFile(file: File): string | null {
-  const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
-  if (!ACCEPTED_EXTENSIONS.includes(extension)) {
+  if (!documentMimeFor(file.name, file.type)) {
     return `${file.name} : seuls les formats PDF, JPEG, PNG et WebP sont acceptés.`;
   }
-  if (file.type && !ACCEPTED_MIME_TYPES.includes(file.type)) {
-    return `${file.name} : le type du fichier n'est pas reconnu.`;
-  }
   if (file.size === 0) return `${file.name} est vide.`;
-  if (file.size > MAX_FILE_BYTES) return `${file.name} dépasse la limite de 10 Mo.`;
+  if (file.size > DOCUMENT_MAX_BYTES) return `${file.name} dépasse la limite de 10 Mo.`;
   return null;
 }
 
-async function asFetchedBlob(file: File): Promise<Blob> {
-  const objectUrl = URL.createObjectURL(file);
-  try {
-    const response = await fetch(objectUrl, { cache: "no-store" });
-    if (!response.ok) throw new Error(`Lecture de ${file.name} impossible.`);
-    return await response.blob();
-  } finally {
-    URL.revokeObjectURL(objectUrl);
-  }
+function diskName() {
+  return globalThis.crypto.randomUUID().replaceAll("-", "");
 }
 
 export default function ContractDocuments({
@@ -78,22 +64,49 @@ export default function ContractDocuments({
 
     setUploading(true);
     try {
-      const form = new FormData();
-      form.set("propertyId", propertyId);
-      form.set("leaseId", leaseId);
-      for (const file of selected) {
-        const blob = await asFetchedBlob(file);
-        form.append("files", new File([blob], file.name, { type: file.type || blob.type }));
-      }
+      const uploadMode = await coreRequest<{ direct: boolean }>("lease-upload");
+      if (uploadMode.direct) {
+        const { uploadPresigned } = await import("@vercel/blob/client");
+        const uploaded: { diskName: string; name: string; mime: string; size: number }[] = [];
+        for (const file of selected) {
+          const mime = documentMimeFor(file.name, file.type);
+          if (!mime) throw new Error(`${file.name} : format non reconnu.`);
+          const uploadedDiskName = diskName();
+          await uploadPresigned(`liaison/${uploadedDiskName}`, file, {
+            access: "private",
+            handleUploadUrl: "/api/lease-upload",
+            clientPayload: JSON.stringify({
+              propertyId,
+              leaseId,
+              name: file.name,
+              mime,
+              size: file.size,
+            }),
+            contentType: mime,
+            multipart: file.size > 4 * 1024 * 1024,
+          });
+          uploaded.push({ diskName: uploadedDiskName, name: file.name, mime, size: file.size });
+        }
+        await coreRequest("lease-upload-complete", { propertyId, leaseId, files: uploaded });
+      } else {
+        const form = new FormData();
+        form.set("propertyId", propertyId);
+        form.set("leaseId", leaseId);
+        for (const file of selected) {
+          const mime = documentMimeFor(file.name, file.type);
+          if (!mime) throw new Error(`${file.name} : format non reconnu.`);
+          form.append("files", mime === file.type ? file : new File([file], file.name, { type: mime }), file.name);
+        }
 
-      const response = await fetch("/api/core/lease-upload", {
-        method: "POST",
-        credentials: "same-origin",
-        cache: "no-store",
-        body: form,
-      });
-      const payload = (await response.json().catch(() => ({}))) as { error?: string };
-      if (!response.ok) throw new Error(payload.error || "L'envoi des documents a échoué.");
+        const response = await fetch("/api/core/lease-upload", {
+          method: "POST",
+          credentials: "same-origin",
+          cache: "no-store",
+          body: form,
+        });
+        const payload = (await response.json().catch(() => ({}))) as { error?: string };
+        if (!response.ok) throw new Error(payload.error || "L'envoi des documents a échoué.");
+      }
 
       await onUploaded();
       setSuccess(
@@ -124,7 +137,7 @@ export default function ContractDocuments({
             ref={inputRef}
             type="file"
             multiple
-            accept=".pdf,.jpg,.jpeg,.png,.webp"
+            accept={DOCUMENT_ACCEPT}
             className="hidden"
             onChange={(event) => void upload(event.target.files)}
           />
